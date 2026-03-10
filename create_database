@@ -1,0 +1,2 @@
+select * from "A shit"
+where A shit.Rating = 1 
