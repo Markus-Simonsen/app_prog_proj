@@ -1,0 +1,13 @@
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/bin/Debug/net10.0/CourseAdminSystem.Model.deps.json
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/bin/Debug/net10.0/CourseAdminSystem.Model.dll
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/bin/Debug/net10.0/CourseAdminSystem.Model.pdb
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net10.0/CourseAdminSystem.Model.csproj.AssemblyReference.cache
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net10.0/CourseAdminSystem.Model.GeneratedMSBuildEditorConfig.editorconfig
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net10.0/CourseAdminSystem.Model.AssemblyInfoInputs.cache
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net10.0/CourseAdminSystem.Model.AssemblyInfo.cs
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net10.0/CourseAdminSystem.Model.csproj.CoreCompileInputs.cache
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net10.0/CourseAdminSystem.Model.sourcelink.json
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net10.0/CourseAdminSystem.Model.dll
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net10.0/refint/CourseAdminSystem.Model.dll
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net10.0/CourseAdminSystem.Model.pdb
+/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net10.0/ref/CourseAdminSystem.Model.dll
