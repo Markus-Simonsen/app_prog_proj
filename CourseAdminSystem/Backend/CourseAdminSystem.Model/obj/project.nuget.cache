@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "ImVb9HTVi8Q=",
+  "dgSpecHash": "wNhTJGgGnTg=",
   "success": true,
-  "projectFilePath": "/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/CourseAdminSystem.Model.csproj",
+  "projectFilePath": "/Users/minhhanhdo/Desktop/CBS/[2nd Sem] Courses/Applied Programming/the_shitty_project/app_prog_proj/CourseAdminSystem/Backend/CourseAdminSystem.Model/CourseAdminSystem.Model.csproj",
   "expectedPackageFiles": [
-    "/home/markus-simonsen/.nuget/packages/microsoft.extensions.configuration/10.0.5/microsoft.extensions.configuration.10.0.5.nupkg.sha512",
-    "/home/markus-simonsen/.nuget/packages/microsoft.extensions.configuration.abstractions/10.0.5/microsoft.extensions.configuration.abstractions.10.0.5.nupkg.sha512",
-    "/home/markus-simonsen/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.0/microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
-    "/home/markus-simonsen/.nuget/packages/microsoft.extensions.logging.abstractions/10.0.0/microsoft.extensions.logging.abstractions.10.0.0.nupkg.sha512",
-    "/home/markus-simonsen/.nuget/packages/microsoft.extensions.primitives/10.0.5/microsoft.extensions.primitives.10.0.5.nupkg.sha512",
-    "/home/markus-simonsen/.nuget/packages/npgsql/10.0.2/npgsql.10.0.2.nupkg.sha512"
+    "/Users/minhhanhdo/.nuget/packages/microsoft.extensions.configuration/10.0.5/microsoft.extensions.configuration.10.0.5.nupkg.sha512",
+    "/Users/minhhanhdo/.nuget/packages/microsoft.extensions.configuration.abstractions/10.0.5/microsoft.extensions.configuration.abstractions.10.0.5.nupkg.sha512",
+    "/Users/minhhanhdo/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.0/microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
+    "/Users/minhhanhdo/.nuget/packages/microsoft.extensions.logging.abstractions/10.0.0/microsoft.extensions.logging.abstractions.10.0.0.nupkg.sha512",
+    "/Users/minhhanhdo/.nuget/packages/microsoft.extensions.primitives/10.0.5/microsoft.extensions.primitives.10.0.5.nupkg.sha512",
+    "/Users/minhhanhdo/.nuget/packages/npgsql/10.0.2/npgsql.10.0.2.nupkg.sha512"
   ],
   "logs": []
 }

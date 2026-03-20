@@ -550,33 +550,32 @@
     ]
   },
   "packageFolders": {
-    "/home/markus-simonsen/.nuget/packages/": {}
+    "/Users/minhhanhdo/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.API/CourseAdminSystem.API.csproj",
+      "projectUniqueName": "/Users/minhhanhdo/Desktop/CBS/[2nd Sem] Courses/Applied Programming/the_shitty_project/app_prog_proj/CourseAdminSystem/Backend/CourseAdminSystem.API/CourseAdminSystem.API.csproj",
       "projectName": "CourseAdminSystem.API",
-      "projectPath": "/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.API/CourseAdminSystem.API.csproj",
-      "packagesPath": "/home/markus-simonsen/.nuget/packages/",
-      "outputPath": "/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.API/obj/",
+      "projectPath": "/Users/minhhanhdo/Desktop/CBS/[2nd Sem] Courses/Applied Programming/the_shitty_project/app_prog_proj/CourseAdminSystem/Backend/CourseAdminSystem.API/CourseAdminSystem.API.csproj",
+      "packagesPath": "/Users/minhhanhdo/.nuget/packages/",
+      "outputPath": "/Users/minhhanhdo/Desktop/CBS/[2nd Sem] Courses/Applied Programming/the_shitty_project/app_prog_proj/CourseAdminSystem/Backend/CourseAdminSystem.API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/markus-simonsen/.nuget/NuGet/NuGet.Config"
+        "/Users/minhhanhdo/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "/usr/lib/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/CourseAdminSystem.Model.csproj": {
-              "projectPath": "/home/markus-simonsen/Desktop/UNI/DIB/sem_2/applied/project/CourseAdminSystem/Backend/CourseAdminSystem.Model/CourseAdminSystem.Model.csproj"
+            "/Users/minhhanhdo/Desktop/CBS/[2nd Sem] Courses/Applied Programming/the_shitty_project/app_prog_proj/CourseAdminSystem/Backend/CourseAdminSystem.Model/CourseAdminSystem.Model.csproj": {
+              "projectPath": "/Users/minhhanhdo/Desktop/CBS/[2nd Sem] Courses/Applied Programming/the_shitty_project/app_prog_proj/CourseAdminSystem/Backend/CourseAdminSystem.Model/CourseAdminSystem.Model.csproj"
             }
           }
         }
@@ -591,7 +590,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net10.0": {
@@ -629,7 +628,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/10.0.104/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.201/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

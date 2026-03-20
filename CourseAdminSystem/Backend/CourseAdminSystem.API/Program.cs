@@ -9,6 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ShitterRepository, ShitterRepository>();
+builder.Services.AddScoped<AShitRepository, AShitRepository>();
 
 var app = builder.Build();
 
