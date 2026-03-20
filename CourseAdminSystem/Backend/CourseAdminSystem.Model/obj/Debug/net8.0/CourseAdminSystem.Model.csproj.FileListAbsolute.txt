@@ -1,6 +1,0 @@
-/Users/minhhanhdo/Desktop/CBS/[2nd Sem] Courses/Applied Programming/the_shitty_project/app_prog_proj/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net8.0/CourseAdminSystem.Model.csproj.AssemblyReference.cache
-/Users/minhhanhdo/Desktop/CBS/[2nd Sem] Courses/Applied Programming/the_shitty_project/app_prog_proj/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net8.0/CourseAdminSystem.Model.GeneratedMSBuildEditorConfig.editorconfig
-/Users/minhhanhdo/Desktop/CBS/[2nd Sem] Courses/Applied Programming/the_shitty_project/app_prog_proj/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net8.0/CourseAdminSystem.Model.AssemblyInfoInputs.cache
-/Users/minhhanhdo/Desktop/CBS/[2nd Sem] Courses/Applied Programming/the_shitty_project/app_prog_proj/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net8.0/CourseAdminSystem.Model.AssemblyInfo.cs
-/Users/minhhanhdo/Desktop/CBS/[2nd Sem] Courses/Applied Programming/the_shitty_project/app_prog_proj/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net8.0/CourseAdminSystem.Model.csproj.CoreCompileInputs.cache
-/Users/minhhanhdo/Desktop/CBS/[2nd Sem] Courses/Applied Programming/the_shitty_project/app_prog_proj/CourseAdminSystem/Backend/CourseAdminSystem.Model/obj/Debug/net8.0/CourseAdminSystem.Model.sourcelink.json
