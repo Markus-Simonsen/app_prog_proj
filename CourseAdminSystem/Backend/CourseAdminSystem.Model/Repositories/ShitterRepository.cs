@@ -29,9 +29,8 @@ public class ShitterRepository : BaseRepository
                     {
                         FirstName = data["firstname"].ToString(),
                         LastName = data["lastname"].ToString(),
-                        DateOfBirth = (DateOnly)data["dob"],
                         Email = data["email"].ToString(),
-                        Phone = data["phone"].ToString()
+                        Password = data["password"].ToString()
                     };
                 }
             }
@@ -63,9 +62,8 @@ public class ShitterRepository : BaseRepository
                     {
                         FirstName = data["firstname"].ToString(),
                         LastName = data["lastname"].ToString(),
-                        DateOfBirth = (DateOnly)data["dob"],
                         Email = data["email"].ToString(),
-                        Phone = data["phone"].ToString()
+                        Password = data["password"].ToString()
                     };
                     shitters.Add(s);
                 }
@@ -87,16 +85,15 @@ public class ShitterRepository : BaseRepository
             var cmd = dbConn.CreateCommand();
             cmd.CommandText = @"
 insert into shitter
-(firstname,lastname, studyprogramid, dob, email, phone)
+(firstname,lastname, studyprogramid, dob, email, password)
 values
-(@firstname,@lastname, @studyprogramid, @dob, @email, @phone)
+(@firstname,@lastname, @studyprogramid, @dob, @email, @password)
 ";
             //adding parameters in a better way
             cmd.Parameters.AddWithValue("@firstname", NpgsqlDbType.Text, s.FirstName);
             cmd.Parameters.AddWithValue("@lastname", NpgsqlDbType.Text, s.LastName);
-            cmd.Parameters.AddWithValue("@dob", NpgsqlDbType.Date, s.DateOfBirth);
             cmd.Parameters.AddWithValue("@email", NpgsqlDbType.Text, s.Email);
-            cmd.Parameters.AddWithValue("@phone", NpgsqlDbType.Text, s.Phone);
+            cmd.Parameters.AddWithValue("@password", NpgsqlDbType.Text, s.Password);
             //will return true if all goes well
             bool result = InsertData(dbConn, cmd);
             return result;
@@ -117,14 +114,13 @@ lastname=@lastname,
 studyprogramid=@studyprogramid,
 dob=@dob,
 email=@email,
-phone=@phone
+password=@password
 where
 id = @id";
         cmd.Parameters.AddWithValue("@firstname", NpgsqlDbType.Text, s.FirstName);
         cmd.Parameters.AddWithValue("@lastname", NpgsqlDbType.Text, s.LastName);
-        cmd.Parameters.AddWithValue("@dob", NpgsqlDbType.Date, s.DateOfBirth);
         cmd.Parameters.AddWithValue("@email", NpgsqlDbType.Text, s.Email);
-        cmd.Parameters.AddWithValue("@phone", NpgsqlDbType.Text, s.Phone);
+        cmd.Parameters.AddWithValue("@password", NpgsqlDbType.Text, s.Password);
         cmd.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, s.Id);
         bool result = UpdateData(dbConn, cmd);
         return result;
