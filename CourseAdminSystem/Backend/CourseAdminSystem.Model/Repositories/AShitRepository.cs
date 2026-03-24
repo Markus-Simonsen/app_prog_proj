@@ -27,11 +27,11 @@ public class AShitRepository : BaseRepository
                 {
                     return new AShit(Convert.ToInt32(data["shitid"]))
                     {
-                        userid = Convert.ToInt32(data["userid"]), //question 1: isn't userID under ashit equal id under shitter?
-                        toiletid = Convert.ToInt32(data["toiletid"]),
-                        time = DateTime.Parse(data["time"].ToString()),
-                        rating = Convert.ToInt32(data["rating"]),
-                        review = data["review"].ToString()
+                        Shitterid = Convert.ToInt32(data["shitterid"]), //question 1: isn't shitterID under ashit equal id under shitter?
+                        Toiletid = Convert.ToInt32(data["toiletid"]),
+                        Time = DateTime.Parse(data["time"].ToString()),
+                        Rating = Convert.ToInt32(data["rating"]),
+                        Review = data["review"].ToString()
                     };
                 }
             }
@@ -61,11 +61,11 @@ public class AShitRepository : BaseRepository
                 {
                     AShit a = new AShit(Convert.ToInt32(data["shitid"]))
                     {
-                        userid = Convert.ToInt32(data["userid"]),
-                        toiletid = Convert.ToInt32(data["toiletid"]),
-                        time = DateTime.Parse(data["time"].ToString()),
-                        rating = Convert.ToInt32(data["rating"]),
-                        review = data["review"].ToString()
+                        Shitterid = Convert.ToInt32(data["shitterid"]),
+                        Toiletid = Convert.ToInt32(data["toiletid"]),
+                        Time = DateTime.Parse(data["time"].ToString()),
+                        Rating = Convert.ToInt32(data["rating"]),
+                        Review = data["review"].ToString()
                     };
                     moreshits.Add(a);
                 }
@@ -87,17 +87,17 @@ public class AShitRepository : BaseRepository
             var cmd = dbConn.CreateCommand();
             cmd.CommandText = @"
 insert into ashit
-(shitid,userid, toiletid, time, rating, review)
+(shitid,shitterid, toiletid, time, rating, review)
 values
-(@shitid, @userid, @toiletid, @time, @rating, @review)
+(@shitid, @shitterid, @toiletid, @time, @rating, @review)
 ";
             //adding parameters in a better way
             cmd.Parameters.AddWithValue("@shitid", NpgsqlDbType.Integer, a.ShitID);
-            cmd.Parameters.AddWithValue("@userid", NpgsqlDbType.Integer, a.userid);
-            cmd.Parameters.AddWithValue("@toiletid", NpgsqlDbType.Integer, a.toiletid);
-            cmd.Parameters.AddWithValue("@time", NpgsqlDbType.Date, a.time);
-            cmd.Parameters.AddWithValue("@rating", NpgsqlDbType.Integer, a.rating);
-            cmd.Parameters.AddWithValue("@review", NpgsqlDbType.Text, a.review);
+            cmd.Parameters.AddWithValue("@shitterid", NpgsqlDbType.Integer, a.Shitterid);
+            cmd.Parameters.AddWithValue("@toiletid", NpgsqlDbType.Integer, a.Toiletid);
+            cmd.Parameters.AddWithValue("@time", NpgsqlDbType.Date, a.Time);
+            cmd.Parameters.AddWithValue("@rating", NpgsqlDbType.Integer, a.Rating);
+            cmd.Parameters.AddWithValue("@review", NpgsqlDbType.Text, a.Review);
             //will return true if all goes well
             bool result = InsertData(dbConn, cmd);
             return result;
@@ -114,7 +114,7 @@ values
         cmd.CommandText = @"
 update ashit set
 shitid=@shitid,
-userid=@userid,
+shitterid=@shitterid,
 toiletid=@toiletid,
 time=@time,
 rating=@rating,
@@ -122,11 +122,11 @@ review=@review
 where
 shitid = @shitid";
         cmd.Parameters.AddWithValue("@shitid", NpgsqlDbType.Integer, a.ShitID);
-        cmd.Parameters.AddWithValue("@userid", NpgsqlDbType.Integer, a.userid);
-        cmd.Parameters.AddWithValue("@toiletid", NpgsqlDbType.Integer, a.toiletid);
-        cmd.Parameters.AddWithValue("@time", NpgsqlDbType.Date, a.time);
-        cmd.Parameters.AddWithValue("@rating", NpgsqlDbType.Integer, a.rating);
-        cmd.Parameters.AddWithValue("@review", NpgsqlDbType.Text, a.review);
+        cmd.Parameters.AddWithValue("@shitterid", NpgsqlDbType.Integer, a.Shitterid);
+        cmd.Parameters.AddWithValue("@toiletid", NpgsqlDbType.Integer, a.Toiletid);
+        cmd.Parameters.AddWithValue("@time", NpgsqlDbType.Date, a.Time);
+        cmd.Parameters.AddWithValue("@rating", NpgsqlDbType.Integer, a.Rating);
+        cmd.Parameters.AddWithValue("@review", NpgsqlDbType.Text, a.Review);
         cmd.Parameters.AddWithValue("@shitid", NpgsqlDbType.Integer, a.ShitID);
         bool result = UpdateData(dbConn, cmd);
         return result;

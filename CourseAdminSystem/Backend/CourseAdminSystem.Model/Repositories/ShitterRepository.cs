@@ -8,7 +8,7 @@ namespace CourseAdminSystem.Model.Repositories;
 public class ShitterRepository : BaseRepository
 {
     public ShitterRepository(IConfiguration configuration) : base(configuration) { }
-    public Shitter GetShitterById(int id)
+    public Shitter GetShitterById(int shitterid)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -17,15 +17,15 @@ public class ShitterRepository : BaseRepository
             dbConn = new NpgsqlConnection(ConnectionString);
             //creating an SQL command
             var cmd = dbConn.CreateCommand();
-            cmd.CommandText = "select * from shitter where id = @id";
-            cmd.Parameters.Add("@id", NpgsqlDbType.Integer).Value = id;
+            cmd.CommandText = "select * from shitter where shitterid = @shitterid";
+            cmd.Parameters.Add("@shitterid", NpgsqlDbType.Integer).Value = shitterid;
             //call the base method to get data
             var data = GetData(dbConn, cmd);
             if (data != null)
             {
                 if (data.Read()) //every time loop runs it reads next like from fetched rows
                 {
-                    return new Shitter(Convert.ToInt32(data["id"]))
+                    return new Shitter(Convert.ToInt32(data["shitterid"]))
                     {
                         FirstName = data["firstname"].ToString(),
                         LastName = data["lastname"].ToString(),
@@ -58,7 +58,7 @@ public class ShitterRepository : BaseRepository
             {
                 while (data.Read()) //every time loop runs it reads next like from fetched rows
                 {
-                    Shitter s = new Shitter(Convert.ToInt32(data["id"]))
+                    Shitter s = new Shitter(Convert.ToInt32(data["shitterid"]))
                     {
                         FirstName = data["firstname"].ToString(),
                         LastName = data["lastname"].ToString(),
@@ -116,25 +116,25 @@ dob=@dob,
 email=@email,
 password=@password
 where
-id = @id";
+shitterid = @shitterid";
         cmd.Parameters.AddWithValue("@firstname", NpgsqlDbType.Text, s.FirstName);
         cmd.Parameters.AddWithValue("@lastname", NpgsqlDbType.Text, s.LastName);
         cmd.Parameters.AddWithValue("@email", NpgsqlDbType.Text, s.Email);
         cmd.Parameters.AddWithValue("@password", NpgsqlDbType.Text, s.Password);
-        cmd.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, s.Id);
+        cmd.Parameters.AddWithValue("@shitterid", NpgsqlDbType.Integer, s.Shitterid);
         bool result = UpdateData(dbConn, cmd);
         return result;
     }
-    public bool DeleteShitter(int id)
+    public bool DeleteShitter(int Shitterid)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
         cmd.CommandText = @"
 delete from shitter
-where id = @id
+where shitterid = @shitterid
 ";
         //adding parameters in a better way
-        cmd.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, id);
+        cmd.Parameters.AddWithValue("@shitterid", NpgsqlDbType.Integer, Shitterid);
         //will return true if all goes well
         bool result = DeleteData(dbConn, cmd);
         return result;

@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { StudentCard } from './student-card/student-card';
-import { StudentList } from './student-list/student-list';
+import { StudentList } from './shitter-list/student-list';
 import { RouterLink } from '@angular/router';
 
 @Component({

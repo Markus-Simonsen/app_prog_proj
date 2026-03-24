@@ -15,10 +15,10 @@ namespace CourseAdminSystem.API.Controllers
             Repository = repository;
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<AShit> GetAShit([FromRoute] int id)
+        [HttpGet("{Shitid}")]
+        public ActionResult<AShit> GetAShit([FromRoute] int Shitid)
         {
-            AShit ashit = Repository.GetAShitById(id);
+            AShit ashit = Repository.GetAShitById(Shitid);
             if (ashit == null)
             {
                 return NotFound();
@@ -58,7 +58,7 @@ namespace CourseAdminSystem.API.Controllers
             AShit existingAShit = Repository.GetAShitById(ashit.ShitID);
             if (existingAShit == null)
             {
-                return NotFound($"AShit with id {ashit.ShitID} not found");
+                return NotFound($"AShit with Shitid {ashit.ShitID} not found");
             }
             bool status = Repository.UpdateAShit(ashit);
             if (status)
@@ -67,20 +67,20 @@ namespace CourseAdminSystem.API.Controllers
             }
             return BadRequest("Something went wrong");
         }
-        [HttpDelete("{id}")]
-        public ActionResult DeleteAShit([FromRoute] int id)
+        [HttpDelete("{Shitid}")]
+        public ActionResult DeleteAShit([FromRoute] int Shitid)
         {
-            AShit existingAShit = Repository.GetAShitById(id);
+            AShit existingAShit = Repository.GetAShitById(Shitid);
             if (existingAShit == null)
             {
-                return NotFound($"AShit with id {id} not found");
+                return NotFound($"AShit with Shitid {Shitid} not found");
             }
-            bool status = Repository.DeleteAShit(id);
+            bool status = Repository.DeleteAShit(Shitid);
             if (status)
             {
                 return NoContent();
             }
-            return BadRequest($"Unable to delete ashit with id {id}");
+            return BadRequest($"Unable to delete ashit with Shitid {Shitid}");
         }
     }
 }

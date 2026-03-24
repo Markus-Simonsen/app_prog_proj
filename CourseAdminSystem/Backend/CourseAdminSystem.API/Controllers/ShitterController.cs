@@ -15,10 +15,10 @@ namespace CourseAdminSystem.API.Controllers
             Repository = repository;
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Shitter> GetShitter([FromRoute] int id)
+        [HttpGet("{Shitterid}")]
+        public ActionResult<Shitter> GetShitter([FromRoute] int Shitterid)
         {
-            Shitter shitter = Repository.GetShitterById(id);
+            Shitter shitter = Repository.GetShitterById(Shitterid);
             if (shitter == null)
             {
                 return NotFound();
@@ -55,10 +55,10 @@ namespace CourseAdminSystem.API.Controllers
             {
                 return BadRequest("Shitter info not correct");
             }
-            Shitter existinShitter = Repository.GetShitterById(shitter.Id);
+            Shitter existinShitter = Repository.GetShitterById(shitter.Shitterid);
             if (existinShitter == null)
             {
-                return NotFound($"Shitter with id {shitter.Id} not found");
+                return NotFound($"Shitter with Shitterid {shitter.Shitterid} not found");
             }
             bool status = Repository.UpdateShitter(shitter);
             if (status)
@@ -67,20 +67,20 @@ namespace CourseAdminSystem.API.Controllers
             }
             return BadRequest("Something went wrong");
         }
-        [HttpDelete("{id}")]
-        public ActionResult DeleteShitter([FromRoute] int id)
+        [HttpDelete("{Shitterid}")]
+        public ActionResult DeleteShitter([FromRoute] int Shitterid)
         {
-            Shitter existingShitter = Repository.GetShitterById(id);
+            Shitter existingShitter = Repository.GetShitterById(Shitterid);
             if (existingShitter == null)
             {
-                return NotFound($"Shitter with id {id} not found");
+                return NotFound($"Shitter with Shitterid {Shitterid} not found");
             }
-            bool status = Repository.DeleteShitter(id);
+            bool status = Repository.DeleteShitter(Shitterid);
             if (status)
             {
                 return NoContent();
             }
-            return BadRequest($"Unable to delete shitter with id {id}");
+            return BadRequest($"Unable to delete shitter with Shitterid {Shitterid}");
         }
     }
 }

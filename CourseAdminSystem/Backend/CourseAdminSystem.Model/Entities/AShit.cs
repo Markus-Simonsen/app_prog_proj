@@ -4,10 +4,10 @@ public class AShit
 {
     public AShit(int shitid) { ShitID = shitid; }
     public int ShitID { get; set; }
-    public int userid { get; set; }
-    public int toiletid{get;set;}
-    public DateTime time { get; set; }
-    public int rating { get; set; }
-    public string review { get; set; }
+    public int Shitterid { get; set; }
+    public int Toiletid { get; set; }
+    public DateTime Time { get; set; }
+    public int Rating { get; set; }
+    public string Review { get; set; }
 }
 

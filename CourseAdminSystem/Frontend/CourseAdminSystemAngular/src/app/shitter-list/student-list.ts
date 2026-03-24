@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { StudentCard } from '../student-card/student-card';
-import { Student } from '../model/student';
+import { Student } from '../model/shitter';
 
 @Component({
   selector: 'app-student-list',
