@@ -1,5 +1,5 @@
 -- Insert users into shitter table
-INSERT INTO "shitter" ("id", "email", "password", "firstname", "lastname") VALUES
+INSERT INTO "shitter" ("shitterid", "email", "password", "firstname", "lastname") VALUES
 (1, 'john.doe@example.com', 'hashed_password_abc123', 'John', 'Doe'),
 (2, 'jane.smith@example.com', 'hashed_password_def456', 'Jane', 'Smith'),
 (3, 'bob.wilson@example.com', 'hashed_password_ghi789', 'Bob', 'Wilson'),
@@ -7,7 +7,7 @@ INSERT INTO "shitter" ("id", "email", "password", "firstname", "lastname") VALUE
 (5, 'charlie.brown@example.com', 'hashed_password_mno345', 'Charlie', 'Brown');
 
 -- Insert toilets into toilet table
-INSERT INTO "toilet" ("Toilet ID", "Location") VALUES
+INSERT INTO "toilet" ("toiletid", "location") VALUES
 (101, 1),
 (102, 2),
 (103, 3),
@@ -15,7 +15,7 @@ INSERT INTO "toilet" ("Toilet ID", "Location") VALUES
 (105, 5);
 
 -- Insert reviews into a_shit table
-INSERT INTO "a_shit" ("Shit ID", "user ID", "Toilet ID", "Time", "Rating", "Review") VALUES
+INSERT INTO "ashit" ("shitid", "shitterid", "toiletid", "time", "rating", "review") VALUES
 (1001, 1, 101, '2025-01-15', 4, 'Clean and well maintained'),
 (1002, 2, 102, '2025-02-20', 2, 'Needs better ventilation'),
 (1003, 3, 103, '2025-03-10', 5, 'Excellent facilities!'),
