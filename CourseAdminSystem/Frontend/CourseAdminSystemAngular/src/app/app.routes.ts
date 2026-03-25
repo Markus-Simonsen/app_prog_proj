@@ -1,4 +1,4 @@
 import { Routes } from '@angular/router';
-import { StudentList } from './shitter-list/student-list';
+import { ShitterList } from './shitter-list/shitter-list';
 
-export const routes: Routes = [{ path: 'students', component: StudentList }];
+export const routes: Routes = [{ path: 'students', component: ShitterList }];

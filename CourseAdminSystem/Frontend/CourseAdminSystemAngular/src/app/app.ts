@@ -1,12 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { StudentCard } from './student-card/student-card';
-import { StudentList } from './shitter-list/student-list';
+import { ShitterList } from './shitter-list/shitter-list';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, StudentCard, StudentList],
+  imports: [RouterOutlet, RouterLink, ShitterList],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
