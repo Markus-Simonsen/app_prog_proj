@@ -7,7 +7,7 @@ import { Shitter } from '../model/shitter';
   providedIn: 'root',
 })
 export class ShitterService {
-  baseUrl: string = 'http://localhost:5090/api/';
+  baseUrl: string = 'http://localhost:5090/api';
   constructor(private http: HttpClient) {}
   getShitters(): Observable<Shitter[]> {
     return this.http.get<Shitter[]>(`${this.baseUrl}/shitter`);

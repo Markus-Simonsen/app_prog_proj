@@ -23,6 +23,7 @@ if (app.Environment.IsDevelopment())
 // removed due to instructions from Abid
 // app.UseHttpsRedirection();
 
+app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseAuthorization();
 
 app.MapControllers();

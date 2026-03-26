@@ -1,5 +1,5 @@
 export interface Shitter {
-  Shitterid: number;
+  shitterid: number;
   firstName: string;
   lastName: string;
   DoB: Date;

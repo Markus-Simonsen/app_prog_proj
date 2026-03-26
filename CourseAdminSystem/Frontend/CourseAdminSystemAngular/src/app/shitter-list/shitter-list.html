@@ -1,1 +1,34 @@
-@for (student of students; track $index) {}
+<div class="shitter-list-container">
+  <h2>Shitter Directory</h2>
+
+  <div class="shitter-list-container">
+    <h2>Shitter Directory</h2>
+
+    @if (shitters.length == 0) {
+      <div class="empty-state">No shitter records available yet.</div>
+    } @else {
+      <table class="shitter-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Nae</th>
+            <th>Email</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (s of shitters; track s.shitterid) {
+            <tr>
+              <td>{{ s.shitterid }}</td>
+              <td>{{ s.firstName }}</td>
+              <td>{{ s.lastName }}</td>
+              <td>{{ s.email }}</td>
+              <td>{{ s.password }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </div>
+</div>
