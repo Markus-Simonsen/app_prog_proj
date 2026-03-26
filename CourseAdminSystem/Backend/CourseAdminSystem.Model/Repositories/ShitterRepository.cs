@@ -85,11 +85,12 @@ public class ShitterRepository : BaseRepository
             var cmd = dbConn.CreateCommand();
             cmd.CommandText = @"
 insert into shitter
-(firstname,lastname, studyprogramid, dob, email, password)
+(shitterid, firstname,lastname, email, password)
 values
-(@firstname,@lastname, @studyprogramid, @dob, @email, @password)
+(@shitterid, @firstname,@lastname, @email, @password)
 ";
             //adding parameters in a better way
+            cmd.Parameters.AddWithValue("@shitterid", NpgsqlDbType.Bigint, s.Shitterid);
             cmd.Parameters.AddWithValue("@firstname", NpgsqlDbType.Text, s.FirstName);
             cmd.Parameters.AddWithValue("@lastname", NpgsqlDbType.Text, s.LastName);
             cmd.Parameters.AddWithValue("@email", NpgsqlDbType.Text, s.Email);
@@ -111,8 +112,6 @@ values
 update shitter set
 firstname=@firstname,
 lastname=@lastname,
-studyprogramid=@studyprogramid,
-dob=@dob,
 email=@email,
 password=@password
 where

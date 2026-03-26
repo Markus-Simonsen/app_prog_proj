@@ -21,4 +21,7 @@ export class ShitterService {
   deleteShitter(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/shitter/${id}`);
   }
+  updateShitter(id: number, shitter: Shitter): Observable<any> {
+    return this.http.put(`${this.baseUrl}/shitter/${id}`, shitter);
+  }
 }

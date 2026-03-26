@@ -2,6 +2,7 @@ namespace CourseAdminSystem.Model.Entities;
 
 public class Shitter
 {
+    public Shitter() { }
     public Shitter(int id) { Shitterid = id; }
     public int Shitterid { get; set; }
     public string FirstName { get; set; }

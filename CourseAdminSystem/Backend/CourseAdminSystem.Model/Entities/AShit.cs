@@ -2,6 +2,7 @@ namespace CourseAdminSystem.Model.Entities;
 
 public class AShit
 {
+    public AShit() { }
     public AShit(int shitid) { ShitID = shitid; }
     public int ShitID { get; set; }
     public int Shitterid { get; set; }

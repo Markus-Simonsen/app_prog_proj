@@ -18,15 +18,61 @@
           </tr>
         </thead>
         <tbody>
-          @for (s of shitters; track s.shitterid) {
+          @for (s of shitters; track s.Shitterid) {
             <tr>
-              <td>{{ s.shitterid }}</td>
-              <td>{{ s.firstName }}</td>
-              <td>{{ s.lastName }}</td>
-              <td>{{ s.email }}</td>
-              <td>{{ s.password }}</td>
+              <td>{{ s.Shitterid }}</td>
+              <td>{{ s.FirstName }}</td>
+              <td>{{ s.LastName }}</td>
+              <td>{{ s.Email }}</td>
+              <td>{{ s.Password }}</td>
+              <td>
+                <button (click)="deleteShitter(s.Shitterid)" class="delete-btn">Delete</button>
+              </td>
             </tr>
           }
+          <tr class="form-row">
+            <td>
+              <input
+                type="number"
+                placeholder="ID"
+                [(ngModel)]="newShitter.Shitterid"
+                class="form-input"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                placeholder="First Name"
+                [(ngModel)]="newShitter.FirstName"
+                class="form-input"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                placeholder="Last Name"
+                [(ngModel)]="newShitter.LastName"
+                class="form-input"
+              />
+            </td>
+            <td>
+              <input
+                type="email"
+                placeholder="Email"
+                [(ngModel)]="newShitter.Email"
+                class="form-input"
+              />
+            </td>
+            <td>
+              <input
+                type="password"
+                placeholder="Password"
+                [(ngModel)]="newShitter.Password"
+                class="form-input"
+              />
+            </td>
+            <td><button (click)="createShitter()" class="create-btn">Create</button></td>
+          </tr>
         </tbody>
       </table>
     }
