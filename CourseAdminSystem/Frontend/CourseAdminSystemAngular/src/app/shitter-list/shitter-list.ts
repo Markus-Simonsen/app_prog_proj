@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-shitter-list',
+  standalone: true,
   templateUrl: './shitter-list.html',
   styleUrl: './shitter-list.css',
   imports: [CommonModule, DatePipe, FormsModule],

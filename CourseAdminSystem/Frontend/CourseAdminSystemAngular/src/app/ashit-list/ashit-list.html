@@ -1,0 +1,72 @@
+<div class="ashit-list-container">
+  <h2>A Shit Directory</h2>
+
+  @if (AShit.length == 0) {
+    <div class="empty-state">No shit records available yet.</div>
+  } @else {
+    <table class="ashit-table">
+      <thead>
+        <tr>
+          <th>Shit ID</th>
+          <th>Shitter ID</th>
+          <th>Toilet ID</th>
+          <th>Time</th>
+          <th>Rating</th>
+          <th>Review</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (a of AShit; track a.ShitID) {
+          <tr>
+            <td>{{ a.ShitID }}</td>
+            <td>{{ a.Shitterid }}</td>
+            <td>{{ a.Toiletid }}</td>
+            <td>{{ a.Time }}</td>
+            <td>{{ a.Rating }}</td>
+            <td>{{ a.Review }}</td>
+          </tr>
+        }
+        <tr class="form-row">
+          <td>
+            <input type="number" 
+            placeholder="ID" 
+            [(ngModel)]="newAShit.ShitID" 
+            class="form-input" />
+          </td>
+          <td>
+            <input type="number" 
+            placeholder="User ID" 
+            [(ngModel)]="newAShit.Shitterid" 
+            class="form-input" />
+          </td>
+          <td>
+            <input type="number" 
+            placeholder="Toilet ID" 
+            [(ngModel)]="newAShit.Toiletid" 
+            class="form-input" />
+          </td>
+          <td>
+            <input type="datetime-local" 
+            [(ngModel)]="newAShit.Time" 
+            class="form-input" />
+          </td>
+          <td>
+            <input type="number" 
+            placeholder="Rating (1-5)" 
+            [(ngModel)]="newAShit.Rating" 
+            class="form-input" />
+          </td>
+          <td>
+            <input type="text" 
+            placeholder="Review" 
+            [(ngModel)]="newAShit.Review" 
+            class="form-input" />
+          </td>
+          <td>
+            <button (click)="createAShit()" class="create-btn">Create</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  }
+</div>
