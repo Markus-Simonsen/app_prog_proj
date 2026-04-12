@@ -1,4 +1,43 @@
-<div class="ashit-list-container">
+<<div class="page-wrapper">
+  <header class="navbar">
+    <div class="logo">💩 The Shitty Project</div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Toilets</a>
+      <button class="login-btn">Log in</button>
+    </nav>
+  </header>
+
+  <main class="content">
+    <h1 class="main-title">Help others poo better!</h1>
+
+    <div class="input-stack">
+
+      <input type="number" 
+             [(ngModel)]="newAShit.ToiletId" 
+             placeholder="Where is it located? (Enter Toilet ID)" 
+             class="pill-input">
+
+      <input type="number" 
+             [(ngModel)]="newAShit.Rating" 
+             placeholder="How would you rate your poo experience? (1-5💩)" 
+             class="pill-input">
+
+      <input type="text" 
+             [(ngModel)]="newAShit.Review" 
+             placeholder="Leave a review for others!" 
+             class="pill-input">
+
+      <div class="button-container">
+        <button (click)="createAShit()" class="submit-pill">Submit</button>
+        <div class="wave-decoration"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- //Professor's template
+ <div class="ashit-list-container">
   <h2>A Shit Directory</h2>
 
   @if (AShit.length == 0) {
@@ -69,4 +108,4 @@
       </tbody>
     </table>
   }
-</div>
+</div> -->

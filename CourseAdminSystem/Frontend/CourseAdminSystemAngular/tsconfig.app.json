@@ -3,7 +3,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "composite": true, //this is what I added after pulling changes from Klaudia's on 31.03
     "outDir": "./out-tsc/app",
+    "rootDir": "./src", //this is what I added after pulling changes from Klaudia's on 31.03
     "types": []
   },
   "include": [

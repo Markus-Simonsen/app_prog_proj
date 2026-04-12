@@ -4,5 +4,5 @@ import { AshitList } from './ashit-list/ashit-list';
 
 export const routes: Routes = [
   { path: 'shitters', component: ShitterList },
-  { path: 'ashits', component: AshitList }
+  { path: 'ashits', component: AshitList },
 ];
