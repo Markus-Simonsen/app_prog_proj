@@ -13,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ShitterRepository, ShitterRepository>();
 builder.Services.AddScoped<AShitRepository, AShitRepository>();
+builder.Services.AddScoped<ToiletRepository, ToiletRepository>();
 
 var app = builder.Build();
 
