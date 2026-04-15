@@ -1,0 +1,48 @@
+<div class="toilet-list-container">
+  <h2>Toilet Directory</h2>
+
+  <div *ngIf="toilets.length === 0" class="empty-state">
+    No toilet records available yet.
+  </div>
+
+  <table *ngIf="toilets.length > 0" class="toilet-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Location</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let toilet of toilets; trackBy: trackByToiletId">
+        <td>{{ toilet.ToiletId }}</td>
+        <td>{{ toilet.Location }}</td>
+        <td>
+          <button (click)="deleteToilet(toilet.ToiletId)" class="delete-btn">Delete</button>
+        </td>
+      </tr>
+      <tr class="form-row">
+        <td>
+          <input
+            type="number"
+            placeholder="ID"
+            [(ngModel)]="newToilet.ToiletId"
+            class="form-input"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            placeholder="Location"
+            [(ngModel)]="newToilet.Location"
+            class="form-input"
+          />
+        </td>
+        <td>
+          <button (click)="createToilet()" class="create-btn">Create</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

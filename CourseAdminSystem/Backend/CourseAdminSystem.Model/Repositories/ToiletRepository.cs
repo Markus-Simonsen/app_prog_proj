@@ -17,7 +17,7 @@ public class ToiletRepository : BaseRepository
             dbConn = new NpgsqlConnection(ConnectionString);
             //creating an SQL command
             var cmd = dbConn.CreateCommand();
-            cmd.CommandText = "select * from toilet where id = @id";
+            cmd.CommandText = "select * from toilet where toiletid = @id";
             cmd.Parameters.Add("@id", NpgsqlDbType.Integer).Value = Toiletid;
             //call the base method to get data
             var data = GetData(dbConn, cmd);
@@ -25,9 +25,10 @@ public class ToiletRepository : BaseRepository
             {
                 if (data.Read()) //every time loop runs it reads next like from fetched rows
                 {
-                    return new Toilet(Convert.ToInt32(data["id"]))
+                    return new Toilet(Convert.ToInt32(data["toiletid"]))
                     {
-                        Location = data["location"].ToString(),
+                        Location = Convert.ToInt32(data["location"]),
+                        ToiletId = Convert.ToInt32(data["toiletid"])
                     };
                 }
             }
@@ -55,9 +56,10 @@ public class ToiletRepository : BaseRepository
             {
                 while (data.Read()) //every time loop runs it reads next like from fetched rows
                 {
-                    Toilet t = new Toilet(Convert.ToInt32(data["Toiletid"]))
+                    Toilet t = new Toilet(Convert.ToInt32(data["toiletid"]))
                     {
-                        Location = data["location"].ToString(),
+                        Location = Convert.ToInt32(data["location"]),
+                        ToiletId = Convert.ToInt32(data["toiletid"])
                     };
                     toilet.Add(t);
                 }
@@ -78,10 +80,12 @@ public class ToiletRepository : BaseRepository
             dbConn = new NpgsqlConnection(ConnectionString);
             var cmd = dbConn.CreateCommand();
             cmd.CommandText = @"
-insert into toilet
+insert into toilet (toiletid, location)
+values (@toiletid, @location)
 ";
             //adding parameters in a better way
-            cmd.Parameters.AddWithValue("@location", NpgsqlDbType.Text, t.Location);
+            cmd.Parameters.AddWithValue("@toiletid", NpgsqlDbType.Integer, t.ToiletId);
+            cmd.Parameters.AddWithValue("@location", NpgsqlDbType.Integer, t.Location);
             //will return true if all goes well
             bool result = InsertData(dbConn, cmd);
             return result;
@@ -97,9 +101,11 @@ insert into toilet
         var cmd = dbConn.CreateCommand();
         cmd.CommandText = @"
 update toilet set
+    location = @location
 where
-id = @id";
-        cmd.Parameters.AddWithValue("@location", NpgsqlDbType.Text, t.Location);
+    toiletid = @id";
+        cmd.Parameters.AddWithValue("@location", NpgsqlDbType.Integer, t.Location);
+        cmd.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, t.ToiletId);
         bool result = UpdateData(dbConn, cmd);
         return result;
     }
@@ -109,10 +115,10 @@ id = @id";
         var cmd = dbConn.CreateCommand();
         cmd.CommandText = @"
 delete from toilet
-where id = @id
+where toiletid = @id
 ";
         //adding parameters in a better way
-        cmd.Parameters.AddWithValue("@Toiletid", NpgsqlDbType.Integer, Toiletid);
+        cmd.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, Toiletid);
         //will return true if all goes well
         bool result = DeleteData(dbConn, cmd);
         return result;
