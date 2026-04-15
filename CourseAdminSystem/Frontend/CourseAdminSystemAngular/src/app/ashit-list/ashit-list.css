@@ -1,4 +1,112 @@
-.ashit-list-container {
+.page-wrapper {
+  min-height: 100vh;
+  background-color: #cbd5e1; 
+  font-family: 'DM Sans', sans-serif;
+  color: #48566a;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  
+  .logo { 
+    font-weight: 500;
+    color: #586e8d; 
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    
+    a { 
+      text-decoration: none; 
+      color: #576d8c; 
+      font-size: 14px;
+      font-weight: 500; 
+    }
+    
+    .login-btn {
+      background: #576d8c;
+      color: white;
+      border: none;
+      padding: 10px 25px; /* Size: 10px vertical, 25px horizontal */
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+    }
+  }
+}
+
+/* Main Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12vh;
+}
+
+.main-title {
+  font-size: 64px;
+  font-weight: 500;
+  color: #576d8c;
+  margin-bottom: 40px;
+  letter-spacing: -1.5px;
+}
+
+.input-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Adjust this number to increase/decrease the gap */
+  width: 100%;
+  max-width: 500px;
+  align-items: center;
+}
+
+.pill-input {
+  width: 100%;
+  padding: 12px 25px;
+  border-radius: 5px;
+  border: none;
+  background-color: hwb(0 100% 0%);
+  color: #586e8d;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  
+  &::placeholder {
+    color: #8a8a8a;
+  }
+}
+
+.submit-pill {
+  background-color: #576d8c;
+  color: white;
+  border: none; 
+  padding: 10px 25px; 
+  border-radius: 50px; 
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px; 
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.2s ease;
+
+  &:hover { 
+    transform: scale(1.05);
+    background-color: #4a5d78;
+  }
+}
+
+/* .ashit-list-container {
   max-width: 1000px;
   margin: 24px auto;
   padding: 18px;
@@ -94,11 +202,11 @@
 }
 
 @media (max-width: 768px) {
-  .shitter-list-container {
+  .ashit-list-container {
     padding: 12px;
   }
-  .shitter-table th,
-  .shitter-table td {
+  .ashit-table th,
+  .ashit-table td {
     padding: 8px;
   }
   .form-input {
@@ -109,4 +217,4 @@
     padding: 6px 12px;
     font-size: 12px;
   }
-}
+} */

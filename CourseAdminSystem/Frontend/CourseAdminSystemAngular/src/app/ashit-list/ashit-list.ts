@@ -16,9 +16,9 @@ export class AshitList implements OnInit {
   newAShit: AShit = {
     ShitID: 0,
     Shitterid: 0,
-    Toiletid: 0,
+    ToiletId: undefined,
     Time: new Date(),
-    Rating: 0,
+    Rating: undefined,
     Review: ''
   };
 
@@ -46,15 +46,18 @@ export class AshitList implements OnInit {
   }
 
   createAShit(): void {
+    //Auto-generated data before API call, to be deleted later
+    this.newAShit.Time = new Date();
+    this.newAShit.Shitterid = 1;
     this.ashitService.createAShit(this.newAShit).subscribe(
       (response: AShit) => {
         this.AShit.push(response);
         this.newAShit = {
           ShitID: 0,
           Shitterid: 0,
-          Toiletid: 0,
+          ToiletId: undefined,
           Time: new Date(),
-          Rating: 0,
+          Rating: undefined,
           Review: ''
         };
       },

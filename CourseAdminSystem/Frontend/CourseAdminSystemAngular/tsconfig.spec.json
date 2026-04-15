@@ -3,6 +3,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "composite": true, ////this is what I added after pulling changes from Klaudia's on 31.03
     "outDir": "./out-tsc/spec",
     "rootDir": "./src",
     "types": [
