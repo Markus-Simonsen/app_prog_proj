@@ -1,0 +1,28 @@
+<main class="content">
+  <h1 class="main-title">Shit Search</h1>
+  <div class="input-stack">
+    <input
+      type="number"
+      id="latitudeInput"
+      [(ngModel)]="Latitude"
+      placeholder="Input your latitude"
+      class="pill-input"
+    />
+    <input
+      type="number"
+      id="longitudeInput"
+      [(ngModel)]="Longitude"
+      placeholder="Input your longitude"
+      class="pill-input"
+    />
+    <button (click)="searchForToilets()" id="searchBtn" class="submit-pill">Search</button>
+    <div class="toilet-container" id="toiletContainer">
+      <div *ngFor="let toilet of Toilets" class="shit-item">
+        <button routerLink="/shit-info/{{ toilet.ToiletId }}">
+          <p><strong>ID:</strong> {{ toilet.ToiletId }}</p>
+          <p><strong>Location:</strong> {{ toilet.Location }}</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</main>

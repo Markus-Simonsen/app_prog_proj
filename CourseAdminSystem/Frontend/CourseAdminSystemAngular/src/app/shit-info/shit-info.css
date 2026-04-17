@@ -1,0 +1,69 @@
+/* Main Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12vh;
+}
+
+main {
+  text-align: center;
+}
+
+.main-title {
+  font-size: 64px;
+  font-weight: 500;
+  color: #576d8c;
+  margin-bottom: 40px;
+  letter-spacing: -1.5px;
+}
+
+#seeOnMapBtn {
+  background-color: #576d8c;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.shitters-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.shitter-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.shit-item {
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  padding: 2rem;
+}
+
+#leaveReviewBtn {
+  background-color: #576d8c;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+}

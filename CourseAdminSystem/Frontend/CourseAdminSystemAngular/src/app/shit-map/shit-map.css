@@ -1,0 +1,23 @@
+/* Main Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12vh;
+}
+
+main {
+  text-align: center;
+}
+
+.main-title {
+  font-size: 64px;
+  font-weight: 500;
+  color: #576d8c;
+  margin-bottom: 40px;
+  letter-spacing: -1.5px;
+}
+
+#map {
+  height: 500px;
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Shitter } from '../model/shitter';
 import { ShitterService } from '../services/shitter-service';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   templateUrl: './shitter-list.html',
   styleUrl: './shitter-list.css',
-  imports: [CommonModule, DatePipe, FormsModule],
+  imports: [CommonModule, FormsModule],
 })
 export class ShitterList implements OnInit {
   constructor(

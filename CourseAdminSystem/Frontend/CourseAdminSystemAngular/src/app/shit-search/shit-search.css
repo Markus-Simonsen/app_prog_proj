@@ -1,0 +1,77 @@
+/* Main Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vh;
+}
+
+.main-title {
+  font-size: 64px;
+  font-weight: 500;
+  color: #576d8c;
+  margin-bottom: 40px;
+  letter-spacing: -1.5px;
+}
+
+#searchBtn {
+  background-color: #576d8c;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.input-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Adjust this number to increase/decrease the gap */
+  width: 100%;
+  max-width: 500px;
+  align-items: center;
+}
+
+.pill-input {
+  width: 100%;
+  padding: 12px 25px;
+  border-radius: 5px;
+  border: none;
+  background-color: hwb(0 100% 0%);
+  color: #586e8d;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+
+  &::placeholder {
+    color: #8a8a8a;
+  }
+}
+
+.submit-pill {
+  background-color: #576d8c;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+
+  &:hover {
+    background-color: #475a78; /* Darker shade on hover */
+    transition: background-color 0.3s ease;
+  }
+}
+
+.toilet-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}

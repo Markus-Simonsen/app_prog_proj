@@ -1,0 +1,19 @@
+<main>
+  <h2>Toilet ID: {{ toiletid }}</h2>
+  <button id="seeOnMapBtn" routerLink="/shit-map/{{ shits[0]?.TheToilet?.Location }}">
+    See on map
+  </button>
+  <!-- <button id="seeOnMapBtn" routerLink="/shit-map/{{ shits[1].ToiletId }}">See on map</button> -->
+  <div class="shitters-container" id="shittersContainer">
+    <div *ngFor="let shit of shits" class="shit-item">
+      <p><strong>ID:</strong> {{ shit.ShitID }}</p>
+      <p><strong>Name:</strong> {{ shit.TheShitter?.FirstName }} {{ shit.TheShitter?.LastName }}</p>
+      <p><strong>Location:</strong> {{ shit.ToiletId ?? 'N/A' }}</p>
+      <p><strong>Time:</strong> {{ shit.Time | date: 'short' }}</p>
+      <p><strong>Rating:</strong> {{ shit.Rating ?? 'Not rated' }}</p>
+      <p><strong>Review:</strong> {{ shit.Review || 'No review' }}</p>
+    </div>
+    <p *ngIf="shits.length === 0">No shits found for this toilet.</p>
+  </div>
+  <button id="leaveReviewBtn">Leave your review!</button>
+</main>
