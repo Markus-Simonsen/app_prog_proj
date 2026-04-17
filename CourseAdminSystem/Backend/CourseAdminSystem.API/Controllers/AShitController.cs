@@ -27,8 +27,12 @@ namespace CourseAdminSystem.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<AShit>> GetMoreShits()
+        public ActionResult<IEnumerable<AShit>> GetMoreShits([FromQuery] int? toiletId, bool jointables = false)
         {
+            if (toiletId.HasValue)
+            {
+                return Ok(Repository.GetAShitsByToiletId(toiletId.Value, jointables));
+            }
             return Ok(Repository.GetMoreShits());
         }
 

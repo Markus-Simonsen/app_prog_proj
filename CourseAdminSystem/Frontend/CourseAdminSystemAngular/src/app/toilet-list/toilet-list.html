@@ -1,9 +1,7 @@
 <div class="toilet-list-container">
   <h2>Toilet Directory</h2>
 
-  <div *ngIf="toilets.length === 0" class="empty-state">
-    No toilet records available yet.
-  </div>
+  <div *ngIf="toilets.length === 0" class="empty-state">No toilet records available yet.</div>
 
   <table *ngIf="toilets.length > 0" class="toilet-table">
     <thead>
@@ -32,7 +30,7 @@
         </td>
         <td>
           <input
-            type="text"
+            type="number"
             placeholder="Location"
             [(ngModel)]="newToilet.Location"
             class="form-input"
@@ -45,4 +43,3 @@
     </tbody>
   </table>
 </div>
-

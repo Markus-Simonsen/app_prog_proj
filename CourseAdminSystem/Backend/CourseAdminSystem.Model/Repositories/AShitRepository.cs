@@ -77,6 +77,81 @@ public class AShitRepository : BaseRepository
             dbConn?.Close();
         }
     }
+
+    public List<AShit> GetAShitsByToiletId(int toiletid, bool jointables)
+    {
+        NpgsqlConnection dbConn = null;
+        var shits = new List<AShit>();
+        try
+        {
+            dbConn = new NpgsqlConnection(ConnectionString);
+            var cmd = dbConn.CreateCommand();
+            if (jointables)
+            {
+                cmd.CommandText = @"
+select a.*, s.*, t.* from ashit a
+join shitter s on a.shitterid = s.shitterid
+join toilet t on a.toiletid = t.toiletid
+where a.toiletid = @toiletid
+";
+                cmd.Parameters.Add("@toiletid", NpgsqlDbType.Integer).Value = toiletid;
+                var data = GetData(dbConn, cmd);
+                if (data != null)
+                {
+                    while (data.Read())
+                    {
+                        AShit a = new AShit(Convert.ToInt32(data["shitid"]))
+                        {
+                            Shitterid = Convert.ToInt32(data["shitterid"]),
+                            Toiletid = Convert.ToInt32(data["toiletid"]),
+                            Time = DateTime.Parse(data["time"].ToString()),
+                            Rating = Convert.ToInt32(data["rating"]),
+                            Review = data["review"].ToString(),
+                            TheShitter = new Shitter(Convert.ToInt32(data["shitterid"]))
+                            {
+                                FirstName = data["firstname"].ToString(),
+                                LastName = data["lastname"].ToString(),
+                                Email = data["email"].ToString(),
+                                Password = data["password"].ToString()
+                            },
+                            TheToilet = new Toilet(Convert.ToInt32(data["toiletid"]))
+                            {
+                                Location = Convert.ToInt32(data["location"]),
+                            }
+                        };
+                        shits.Add(a);
+                    }
+                }
+            }
+            else
+            {
+
+                cmd.CommandText = "select * from ashit where toiletid = @toiletid";
+                cmd.Parameters.Add("@toiletid", NpgsqlDbType.Integer).Value = toiletid;
+                var data = GetData(dbConn, cmd);
+                if (data != null)
+                {
+                    while (data.Read())
+                    {
+                        AShit a = new AShit(Convert.ToInt32(data["shitid"]))
+                        {
+                            Shitterid = Convert.ToInt32(data["shitterid"]),
+                            Toiletid = Convert.ToInt32(data["toiletid"]),
+                            Time = DateTime.Parse(data["time"].ToString()),
+                            Rating = Convert.ToInt32(data["rating"]),
+                            Review = data["review"].ToString()
+                        };
+                        shits.Add(a);
+                    }
+                }
+            }
+            return shits;
+        }
+        finally
+        {
+            dbConn?.Close();
+        }
+    }
     //add a new shitter
     public bool InsertAShit(AShit a)
     {

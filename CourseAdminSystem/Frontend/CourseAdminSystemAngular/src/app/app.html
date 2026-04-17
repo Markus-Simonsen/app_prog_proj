@@ -11,19 +11,14 @@
     crossorigin=""
   ></script>
 </head>
-
-<ul>
-  <li>
-    <a routerLink="/shitters">Shitter list</a>
-  </li>
-  <li>
-    <a routerLink="/ashits">A Shit list</a>
-  </li>
-  <li>
-    <a routerLink="/toilet">Toilet list</a>
-  </li>
-</ul>
-
-<div id="map"></div>
-
-<router-outlet></router-outlet>
+<div class="page-wrapper">
+  <header class="navbar">
+    <div class="logo">💩 The Shitty Project</div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Toilets</a>
+      <button class="login-btn">Log in</button>
+    </nav>
+  </header>
+  <router-outlet></router-outlet>
+</div>

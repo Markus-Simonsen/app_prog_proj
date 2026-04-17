@@ -11,12 +11,11 @@ import { ToiletService } from '../services/toilet-service';
   templateUrl: './toilet-list.html',
   styleUrl: './toilet-list.css',
 })
-
 export class ToiletList implements OnInit {
   toilets: Toilet[] = [];
   newToilet: Toilet = {
     ToiletId: 0,
-    Location: '',
+    Location: 0,
   };
 
   constructor(private toiletService: ToiletService) {}
@@ -32,7 +31,7 @@ export class ToiletList implements OnInit {
       },
       (error: any) => {
         console.error('Error loading toilets:', error);
-      }
+      },
     );
   }
 
@@ -42,12 +41,12 @@ export class ToiletList implements OnInit {
         this.toilets.push(response);
         this.newToilet = {
           ToiletId: 0,
-          Location: '',
+          Location: 0,
         };
       },
       (error: any) => {
         console.error('Error creating toilet:', error);
-      }
+      },
     );
   }
 
@@ -56,7 +55,7 @@ export class ToiletList implements OnInit {
       () => this.loadToilets(),
       (error: any) => {
         console.error('Error deleting toilet:', error);
-      }
+      },
     );
   }
 
@@ -64,4 +63,3 @@ export class ToiletList implements OnInit {
     return toilet.ToiletId;
   }
 }
-

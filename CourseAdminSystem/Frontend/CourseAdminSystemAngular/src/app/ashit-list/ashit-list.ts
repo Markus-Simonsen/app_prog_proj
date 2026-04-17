@@ -19,7 +19,7 @@ export class AshitList implements OnInit {
     ToiletId: undefined,
     Time: new Date(),
     Rating: undefined,
-    Review: ''
+    Review: '',
   };
 
   constructor(private ashitService: AShitService) {
@@ -41,7 +41,7 @@ export class AshitList implements OnInit {
       },
       (error) => {
         console.error('API error fetching more shits:', error);
-      }
+      },
     );
   }
 
@@ -58,12 +58,12 @@ export class AshitList implements OnInit {
           ToiletId: undefined,
           Time: new Date(),
           Rating: undefined,
-          Review: ''
+          Review: '',
         };
       },
       (error) => {
         console.error('Error creating shit record:', error);
-      }
+      },
     );
   }
 }

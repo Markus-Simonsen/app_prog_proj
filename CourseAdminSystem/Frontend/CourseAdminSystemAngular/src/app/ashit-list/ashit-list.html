@@ -1,4 +1,4 @@
-<<div class="page-wrapper">
+<div class="page-wrapper">
   <header class="navbar">
     <div class="logo">💩 The Shitty Project</div>
     <nav class="nav-links">
@@ -12,21 +12,26 @@
     <h1 class="main-title">Help others poo better!</h1>
 
     <div class="input-stack">
+      <input
+        type="number"
+        [(ngModel)]="newAShit.ToiletId"
+        placeholder="Where is it located? (Enter Toilet ID)"
+        class="pill-input"
+      />
 
-      <input type="number" 
-             [(ngModel)]="newAShit.ToiletId" 
-             placeholder="Where is it located? (Enter Toilet ID)" 
-             class="pill-input">
+      <input
+        type="number"
+        [(ngModel)]="newAShit.Rating"
+        placeholder="How would you rate your poo experience? (1-5💩)"
+        class="pill-input"
+      />
 
-      <input type="number" 
-             [(ngModel)]="newAShit.Rating" 
-             placeholder="How would you rate your poo experience? (1-5💩)" 
-             class="pill-input">
-
-      <input type="text" 
-             [(ngModel)]="newAShit.Review" 
-             placeholder="Leave a review for others!" 
-             class="pill-input">
+      <input
+        type="text"
+        [(ngModel)]="newAShit.Review"
+        placeholder="Leave a review for others!"
+        class="pill-input"
+      />
 
       <div class="button-container">
         <button (click)="createAShit()" class="submit-pill">Submit</button>

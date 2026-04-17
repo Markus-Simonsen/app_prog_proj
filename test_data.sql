@@ -8,11 +8,11 @@ INSERT INTO "shitter" ("shitterid", "email", "password", "firstname", "lastname"
 
 -- Insert toilets into toilet table
 INSERT INTO "toilet" ("toiletid", "location") VALUES
-(101, 1),
-(102, 2),
-(103, 3),
-(104, 4),
-(105, 5);
+(101, 55671259),
+(102, 55661259),
+(103, 55681255),
+(104, 55671256),
+(105, 55651261);
 
 -- Insert reviews into a_shit table
 INSERT INTO "ashit" ("shitid", "shitterid", "toiletid", "time", "rating", "review") VALUES

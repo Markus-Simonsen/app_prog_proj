@@ -10,5 +10,10 @@ public class AShit
     public DateTime Time { get; set; }
     public int Rating { get; set; }
     public string Review { get; set; }
+
+    public Shitter TheShitter { get; set; }
+
+    public Toilet TheToilet { get; set; }
+
 }
 

@@ -1,4 +1,4 @@
 export interface Toilet {
-    ToiletId: number;
-    Location: string;
+  ToiletId: number;
+  Location: number;
 }
