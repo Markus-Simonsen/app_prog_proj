@@ -4,18 +4,41 @@
     <input
       type="number"
       id="latitudeInput"
-      [(ngModel)]="Latitude"
+      [(ngModel)]="this.Latitude"
       placeholder="Input your latitude"
       class="pill-input"
+      required
+      #Latitude="ngModel"
+      min="5500"
+      max="5600"
     />
+    @if (Latitude.invalid && Latitude.touched) {
+      <span class="error">Please enter a valid latitude between 5500 and 5600.</span>
+    }
+
     <input
       type="number"
       id="longitudeInput"
-      [(ngModel)]="Longitude"
+      [(ngModel)]="this.Longitude"
       placeholder="Input your longitude"
       class="pill-input"
+      required
+      #Longitude="ngModel"
+      min="1200"
+      max="1300"
     />
-    <button (click)="searchForToilets()" id="searchBtn" class="submit-pill">Search</button>
+    @if (Longitude.invalid && Longitude.touched) {
+      <span class="error">Please enter a valid longitude between 1200 and 1300.</span>
+    }
+
+    <button
+      (click)="searchForToilets()"
+      [disabled]="Longitude.invalid || Latitude.invalid"
+      id="searchBtn"
+      class="submit-pill"
+    >
+      Search
+    </button>
     <div class="toilet-container" id="toiletContainer">
       <div *ngFor="let toilet of Toilets" class="shit-item">
         <button routerLink="/shit-info/{{ toilet.ToiletId }}">

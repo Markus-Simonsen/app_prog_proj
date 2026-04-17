@@ -13,8 +13,9 @@ import { RouterLink } from '@angular/router';
 })
 export class ShitSearch implements OnInit {
   Toilets: Toilet[] = [];
-  Longitude: number = 0;
-  Latitude: number = 0;
+  Longitude: number = 103;
+  Latitude: number = 1234;
+  Invalid: boolean = false;
   constructor(private toiletService: ToiletService) {}
 
   ngOnInit(): void {

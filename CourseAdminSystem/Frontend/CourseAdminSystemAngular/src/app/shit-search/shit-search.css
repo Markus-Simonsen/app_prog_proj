@@ -25,6 +25,12 @@
   margin-bottom: 2rem;
   align-items: center;
 }
+#searchBtn:disabled {
+  background-color: #a0aab5; /* Lighter gray/blue to indicate disabled state */
+  color: #666; /* Darker text for contrast against lighter bg */
+  cursor: not-allowed; /* Changes cursor to indicate it's not clickable */
+  opacity: 0.6; /* Optional: makes it look slightly faded */
+}
 
 .input-stack {
   display: flex;

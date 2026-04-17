@@ -6,9 +6,8 @@
   <!-- <button id="seeOnMapBtn" routerLink="/shit-map/{{ shits[1].ToiletId }}">See on map</button> -->
   <div class="shitters-container" id="shittersContainer">
     <div *ngFor="let shit of shits" class="shit-item">
-      <p><strong>ID:</strong> {{ shit.ShitID }}</p>
       <p><strong>Name:</strong> {{ shit.TheShitter?.FirstName }} {{ shit.TheShitter?.LastName }}</p>
-      <p><strong>Location:</strong> {{ shit.ToiletId ?? 'N/A' }}</p>
+      <p><strong>Location:</strong> {{ shit.TheToilet?.Location }}</p>
       <p><strong>Time:</strong> {{ shit.Time | date: 'short' }}</p>
       <p><strong>Rating:</strong> {{ shit.Rating ?? 'Not rated' }}</p>
       <p><strong>Review:</strong> {{ shit.Review || 'No review' }}</p>
