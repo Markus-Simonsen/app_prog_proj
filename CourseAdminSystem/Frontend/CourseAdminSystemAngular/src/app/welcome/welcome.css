@@ -1,0 +1,73 @@
+.welcome-page {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.95), rgba(203,213,225,0.95));
+}
+
+.content-shell {
+  max-width: 920px;
+  width: 100%;
+  padding: 40px 36px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 24px 80px rgba(75, 90, 128, 0.12);
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #3b4f6e;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 4vw, 5rem);
+  line-height: 1.02;
+  color: #32415a;
+}
+
+.lead {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #4f5f76;
+}
+
+.description {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #6b7a92;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  width: fit-content;
+  padding: 14px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #ffffff;
+  background: #3e5a85;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+  background: #2f4d7a;
+  transform: translateY(-1px);
+}

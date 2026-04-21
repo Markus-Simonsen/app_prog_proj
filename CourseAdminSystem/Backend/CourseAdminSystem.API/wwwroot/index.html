@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Admin System</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: #eef2ff;
+      color: #111827;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      max-width: 900px;
+      width: 100%;
+      padding: 2rem;
+      background: white;
+      box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+      border-radius: 1rem;
+      border: 1px solid #e5e7eb;
+    }
+    h1 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(2rem, 3vw, 3rem);
+      color: #3730a3;
+    }
+    p {
+      line-height: 1.75;
+      margin: 0 0 1.5rem;
+      color: #334155;
+    }
+    .links {
+      display: grid;
+      gap: 1rem;
+    }
+    .card {
+      padding: 1.25rem 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid #dbeafe;
+      background: #eef2ff;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(59, 130, 246, 0.15);
+    }
+    .card h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.15rem;
+      color: #1e3a8a;
+    }
+    .card p {
+      margin: 0;
+      color: #475569;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.65rem;
+      background: #e0e7ff;
+      color: #3730a3;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="badge">Course Admin System</span>
+    <h1>Welcome to the backend API</h1>
+    <p>This page is the homepage for the CourseAdminSystem API. You can use it to check the API from your browser, then explore the API endpoints and Swagger UI.</p>
+    <div class="links">
+      <div class="card">
+        <h2>API Root</h2>
+        <p>Browse the API endpoints directly at <a href="/api/toilet">/api/toilet</a>.</p>
+      </div>
+      <div class="card">
+        <h2>Swagger UI</h2>
+        <p>Open the API documentation at <a href="/swagger">/swagger</a>.</p>
+      </div>
+      <div class="card">
+        <h2>Welcome website</h2>
+        <p>If you want a more advanced frontend, you can add React, Angular, or plain HTML/CSS files to this project under <code>wwwroot</code>.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
