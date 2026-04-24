@@ -3,15 +3,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "composite": true, ////this is what I added after pulling changes from Klaudia's on 31.03
-    "outDir": "./out-tsc/spec",
-    "rootDir": "./src",
-    "types": [
-      "vitest/globals"
-    ]
+    // "composite": true, ////this is what I added after pulling changes from Klaudia's on 31.03
+    // "outDir": "./out-tsc/spec",
+    "types": ["vitest/globals"]
   },
-  "include": [
-    "src/**/*.d.ts",
-    "src/**/*.spec.ts"
-  ]
+  "include": ["src/**/*.d.ts", "src/**/*.spec.ts"]
 }
