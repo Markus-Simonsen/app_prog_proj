@@ -27,3 +27,9 @@ ALTER TABLE
     "ashit" ADD CONSTRAINT "ashit_shitterid_foreign" FOREIGN KEY("shitterid") REFERENCES "shitter"("shitterid");
 ALTER TABLE
     "ashit" ADD CONSTRAINT "ashit_toiletid_foreign" FOREIGN KEY("toiletid") REFERENCES "toilet"("toiletid");
+
+--this is to make shitterid in shitter table auto-generate and assign new ids whenever a new user signs in.
+CREATE SEQUENCE IF NOT EXISTS shitter_shitterid_seq OWNED BY "shitter"."shitterid";
+ALTER TABLE "shitter" ALTER COLUMN "shitterid" SET DEFAULT nextval('shitter_shitterid_seq');
+--The next number starts with the highest existing one.
+SELECT setval('shitter_shitterid_seq', (SELECT MAX(shitterid) FROM shitter));
