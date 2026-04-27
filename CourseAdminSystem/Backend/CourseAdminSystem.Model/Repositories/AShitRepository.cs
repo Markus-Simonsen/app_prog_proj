@@ -162,12 +162,12 @@ where a.toiletid = @toiletid
             var cmd = dbConn.CreateCommand();
             cmd.CommandText = @"
 insert into ashit
-(shitid,shitterid, toiletid, time, rating, review)
+(shitterid, toiletid, time, rating, review)
 values
-(@shitid, @shitterid, @toiletid, @time, @rating, @review)
+(@shitterid, @toiletid, @time, @rating, @review)
 ";
             //adding parameters in a better way
-            cmd.Parameters.AddWithValue("@shitid", NpgsqlDbType.Integer, a.ShitID);
+            //cmd.Parameters.AddWithValue("@shitid", NpgsqlDbType.Integer, a.ShitID);
             cmd.Parameters.AddWithValue("@shitterid", NpgsqlDbType.Integer, a.Shitterid);
             cmd.Parameters.AddWithValue("@toiletid", NpgsqlDbType.Integer, a.Toiletid);
             cmd.Parameters.AddWithValue("@time", NpgsqlDbType.Date, a.Time);

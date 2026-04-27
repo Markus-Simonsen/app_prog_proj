@@ -7,44 +7,6 @@
   overflow: hidden;
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
-
-  .logo {
-    font-weight: 500;
-    color: #586e8d;
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-
-    a {
-      text-decoration: none;
-      color: #576d8c;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .login-btn {
-      background: #576d8c;
-      color: white;
-      border: none;
-      padding: 10px 25px; /* Size: 10px vertical, 25px horizontal */
-      border-radius: 50px;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 14px;
-    }
-  }
-}
-
 /* Main Content */
 .content {
   display: flex;

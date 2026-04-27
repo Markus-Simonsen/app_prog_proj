@@ -1,0 +1,48 @@
+<main class="content">
+  <h1 class="main-title">Ready to poo?</h1>
+  <div class="input-stack">
+    <input
+      type="email"
+      id="emailInput"
+      [(ngModel)]="this.Email"
+      placeholder="Input your email"
+      class="pill-input"
+      required
+      email
+      #EmailField="ngModel"
+    />
+    @if (EmailField.invalid && EmailField.touched) {
+      <span class="error">Please enter a valid email.</span>
+    }
+
+    <input
+      type="password"
+      id="passwordInput"
+      [(ngModel)]="this.Password"
+      placeholder="Input your password"
+      class="pill-input"
+      required
+      #PasswordField="ngModel"
+      minlength="4"
+    />
+    @if (PasswordField.invalid && PasswordField.touched) {
+      <span class="error">Password must be at least 4 characters.</span>
+    }
+
+    <button
+      (click)="login()"
+      [disabled]="EmailField.invalid || PasswordField.invalid || isLoading"
+      class="submit-pill"
+    >
+      {{ isLoading ? 'Logging in...' : 'Login' }}
+    </button>
+
+    @if (errorMessage) {
+      <span class="error">{{ errorMessage }}</span>
+    }
+
+    <p class="signup-prompt">
+      Not a member yet? <a routerLink="/page-sign-up" class="signup-link">Sign up</a>
+    </p>
+  </div>
+</main>

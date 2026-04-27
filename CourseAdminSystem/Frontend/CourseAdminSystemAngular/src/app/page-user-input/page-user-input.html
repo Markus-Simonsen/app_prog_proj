@@ -1,0 +1,71 @@
+<div class="page-wrapper">
+  <main class="content">
+    <h1 class="main-title">Help others poo better!</h1>
+
+    <div class="input-stack">
+
+      <input
+        type="number"
+        [(ngModel)]="Latitude"
+        placeholder="Input your latitude"
+        class="pill-input"
+        required
+        #LatitudeField="ngModel"
+        min="5500"
+        max="5600"
+      />
+      @if (LatitudeField.invalid && LatitudeField.touched) {
+        <span class="error">Please enter a valid latitude between 5500 and 5600.</span>
+      }
+
+      <input
+        type="number"
+        [(ngModel)]="Longitude"
+        placeholder="Input your longitude"
+        class="pill-input"
+        required
+        #LongitudeField="ngModel"
+        min="1200"
+        max="1300"
+      />
+      @if (LongitudeField.invalid && LongitudeField.touched) {
+        <span class="error">Please enter a valid longitude between 1200 and 1300.</span>
+      }
+      
+
+      <input
+        type="number"
+        [(ngModel)]="newAShit.Rating"
+        placeholder="Rating (1-5 💩)"
+        class="pill-input"
+        required
+        min="1"
+        max="5"
+        #RatingField="ngModel"
+      />
+      @if (RatingField.invalid && RatingField.touched) {
+        <span class="error">Please enter a rating between 1 and 5.</span>
+      }
+
+      <input
+        type="text"
+        [(ngModel)]="newAShit.Review"
+        placeholder="Leave a review for others!"
+        class="pill-input"
+        required
+        #ReviewField="ngModel"
+      />
+      @if (ReviewField.invalid && ReviewField.touched) {
+        <span class="error">Please leave a review.</span>
+      }
+
+      <button
+        (click)="submit()"
+        [disabled]="LongitudeField.invalid || LatitudeField.invalid || RatingField.invalid || ReviewField.invalid"
+        class="submit-pill"
+      >
+        Submit
+      </button>
+    </div>
+  </main>
+</div>

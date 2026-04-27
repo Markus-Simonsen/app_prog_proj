@@ -1,0 +1,68 @@
+<div class="page-wrapper">
+  <main class="content">
+    <h1 class="main-title">Ready to poo?</h1>
+    <div class="input-stack">
+      <input
+        type="text"
+        id="firstNameInput"
+        [(ngModel)]="newShitter.FirstName"
+        placeholder="First name"
+        class="pill-input"
+        required
+        #FirstNameField="ngModel"
+      />
+      @if (FirstNameField.invalid && FirstNameField.touched) {
+        <span class="error">Please enter your first name.</span>
+      }
+
+      <input
+        type="text"
+        id="lastNameInput"
+        [(ngModel)]="newShitter.LastName"
+        placeholder="Last name"
+        class="pill-input"
+        required
+        #LastNameField="ngModel"
+      />
+      @if (LastNameField.invalid && LastNameField.touched) {
+        <span class="error">Please enter your last name.</span>
+      }
+
+      <input
+        type="email"
+        id="emailInput"
+        [(ngModel)]="newShitter.Email"
+        placeholder="Email"
+        class="pill-input"
+        required
+        email
+        #EmailField="ngModel"
+      />
+      @if (EmailField.invalid && EmailField.touched) {
+        <span class="error">Please enter a valid email.</span>
+      }
+
+      <input
+        type="password"
+        id="passwordInput"
+        [(ngModel)]="newShitter.Password"
+        placeholder="Password"
+        class="pill-input"
+        required
+        #PasswordField="ngModel"
+        minlength="4"
+      />
+      @if (PasswordField.invalid && PasswordField.touched) {
+        <span class="error">Password must be at least 4 characters.</span>
+      }
+
+      <button
+        (click)="signUp()"
+        [disabled]="FirstNameField.invalid || LastNameField.invalid || EmailField.invalid || PasswordField.invalid"
+        class="submit-pill"
+      >
+        Sign me up!
+      </button>
+    </div>
+  </main>
+</div>

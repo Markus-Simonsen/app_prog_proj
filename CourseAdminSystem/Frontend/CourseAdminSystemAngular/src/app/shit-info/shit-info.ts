@@ -23,7 +23,7 @@ export class ShitInfo implements OnInit {
   newAShit: AShit = {
     ShitID: 0,
     Shitterid: 0,
-    ToiletId: 0,
+    Toiletid: 0,
     Time: new Date(),
     Rating: 0,
     Review: '',

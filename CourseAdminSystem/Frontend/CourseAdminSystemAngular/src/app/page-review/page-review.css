@@ -1,0 +1,102 @@
+.page-wrapper {
+  min-height: 100vh;
+  background-color: #cbd5e1;
+  font-family: 'DM Sans', sans-serif;
+  color: #48566a;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+.main-title {
+  font-size: 64px;
+  font-weight: 500;
+  color: #576d8c;
+  margin-bottom: 12px;
+  letter-spacing: -1.5px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #8a8a8a;
+  margin-bottom: 16px;
+}
+
+.emoji-rating {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.poop-emoji {
+  font-size: 36px;
+  cursor: pointer;
+  opacity: 0.35;
+  transition: all 0.15s ease;
+
+  &:hover {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+
+  &.selected {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.review-box {
+  width: 320px;
+  height: 180px;
+  background-color: hwb(0 100% 0%);
+  border: none;
+  border-radius: 12px;
+  padding: 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: #586e8d;
+  resize: none;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: #8a8a8a;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.submit-pill {
+  background-color: #576d8c;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: #4a5d78;
+  }
+
+  &:disabled {
+    background-color: #a0aab5;
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+  }
+}

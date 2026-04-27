@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AshitList } from './ashit-list';
+import { PageReview } from './page-review';
 
-describe('AshitList', () => {
-  let component: AshitList;
-  let fixture: ComponentFixture<AshitList>;
+describe('PageReview', () => {
+  let component: PageReview;
+  let fixture: ComponentFixture<PageReview>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AshitList]
+      imports: [PageReview]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AshitList);
+    fixture = TestBed.createComponent(PageReview);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

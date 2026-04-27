@@ -72,7 +72,7 @@ public class ToiletRepository : BaseRepository
         }
     }
     //add a new toilet
-    public bool InsertToilet(Toilet t)
+    public Toilet InsertToilet(Toilet t)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -80,15 +80,18 @@ public class ToiletRepository : BaseRepository
             dbConn = new NpgsqlConnection(ConnectionString);
             var cmd = dbConn.CreateCommand();
             cmd.CommandText = @"
-insert into toilet (toiletid, location)
-values (@toiletid, @location)
+insert into toilet (location)
+values (@location)
+RETURNING toiletid
 ";
             //adding parameters in a better way
-            cmd.Parameters.AddWithValue("@toiletid", NpgsqlDbType.Integer, t.ToiletId);
+            //cmd.Parameters.AddWithValue("@toiletid", NpgsqlDbType.Integer, t.ToiletId);
             cmd.Parameters.AddWithValue("@location", NpgsqlDbType.Integer, t.Location);
+            dbConn.Open();
+            var newId = cmd.ExecuteScalar();
+            t.ToiletId = Convert.ToInt32(newId);
             //will return true if all goes well
-            bool result = InsertData(dbConn, cmd);
-            return result;
+            return t;
         }
         finally
         {
