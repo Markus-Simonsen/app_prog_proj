@@ -40,7 +40,7 @@ namespace CourseAdminSystem.API.Controllers
                 return BadRequest("Toilet info not correct");
             }
             Toilet created = Repository.InsertToilet(toilet);
-            if (created!=null)
+            if (created != null)
             {
                 return Ok(created);
             }
