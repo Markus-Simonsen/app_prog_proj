@@ -42,5 +42,28 @@
       font-weight: 500;
       font-size: 14px;
     }
+
+    .username {
+      color: #576d8c;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .logout-btn {
+      background: #576d8c;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .logout-btn:hover {
+      background: #475a78;
+      transition: background-color 0.3s ease;
+    }
   }
 }

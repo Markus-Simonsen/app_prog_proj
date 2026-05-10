@@ -7,14 +7,15 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-shit-search',
+  standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './shit-search.html',
-  styleUrl: './shit-search.css',
+  styleUrls: ['./shit-search.css'],
 })
 export class ShitSearch implements OnInit {
   Toilets: Toilet[] = [];
-  Longitude: number = 103;
-  Latitude: number = 1234;
+  Longitude: number = 1234;
+  Latitude: number = 5512;
   Invalid: boolean = false;
   constructor(private toiletService: ToiletService) {}
 
@@ -45,6 +46,17 @@ export class ShitSearch implements OnInit {
   }
 
   searchForToilets() {
+    if (
+      this.Latitude == null ||
+      this.Longitude == null ||
+      this.Latitude < 5500 ||
+      this.Latitude > 5600 ||
+      this.Longitude < 1200 ||
+      this.Longitude > 1300
+    ) {
+      return;
+    }
+
     const location = this.Longitude * 100 + this.Latitude * 1000000;
     console.log('Searching for toilets near location:', location);
     this.toiletService.getToilets().subscribe((toilets) => {
@@ -56,6 +68,7 @@ export class ShitSearch implements OnInit {
         const distanceB = this.distanceToToilet(b, location);
         return distanceA - distanceB;
       });
+      this.Toilets = [...this.Toilets];
       console.log('Toilets sorted by distance:', this.Toilets);
     });
   }

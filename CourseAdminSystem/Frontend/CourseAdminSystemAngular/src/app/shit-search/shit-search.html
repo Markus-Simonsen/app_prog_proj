@@ -4,36 +4,40 @@
     <input
       type="number"
       id="latitudeInput"
-      [(ngModel)]="this.Latitude"
+      name="Latitude"
+      [(ngModel)]="Latitude"
+      (ngModelChange)="searchForToilets()"
       placeholder="Input your latitude"
       class="pill-input"
       required
-      #Latitude="ngModel"
+      #LatitudeCtrl="ngModel"
       min="5500"
       max="5600"
     />
-    @if (Latitude.invalid && Latitude.touched) {
+    @if (LatitudeCtrl.invalid && LatitudeCtrl.touched) {
       <span class="error">Please enter a valid latitude between 5500 and 5600.</span>
     }
 
     <input
       type="number"
       id="longitudeInput"
-      [(ngModel)]="this.Longitude"
+      name="Longitude"
+      [(ngModel)]="Longitude"
+      (ngModelChange)="searchForToilets()"
       placeholder="Input your longitude"
       class="pill-input"
       required
-      #Longitude="ngModel"
+      #LongitudeCtrl="ngModel"
       min="1200"
       max="1300"
     />
-    @if (Longitude.invalid && Longitude.touched) {
+    @if (LongitudeCtrl.invalid && LongitudeCtrl.touched) {
       <span class="error">Please enter a valid longitude between 1200 and 1300.</span>
     }
 
     <button
       (click)="searchForToilets()"
-      [disabled]="Longitude.invalid || Latitude.invalid"
+      [disabled]="LongitudeCtrl.invalid || LatitudeCtrl.invalid"
       id="searchBtn"
       class="submit-pill"
     >

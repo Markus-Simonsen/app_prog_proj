@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AShitService } from '../services/ashit-service';
 import { AShit } from '../model/ashit';
+import { AuthService } from '../services/auth';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page-review',
@@ -17,6 +19,8 @@ export class PageReview implements OnInit {
     private ashitService: AShitService,
     private cdr: ChangeDetectorRef,
     private router: Router,
+    private route: ActivatedRoute,
+    private AuthService: AuthService,
   ) {
     console.log('PageReview component created');
   }
@@ -32,6 +36,9 @@ export class PageReview implements OnInit {
 
   ngOnInit(): void {
     console.log('PageReview ngOnInit called');
+    this.route.params.subscribe((params: any) => {
+      this.newAShit.Toiletid = +params['toiletid'];
+    });
   }
 
   setRating(rating: number): void {
@@ -40,7 +47,7 @@ export class PageReview implements OnInit {
 
   submitReview(): void {
     this.newAShit.Time = new Date();
-    this.newAShit.Shitterid = 1; // TODO: replace with actual logged-in user ID
+    this.newAShit.Shitterid = this.AuthService.getCurrentShitter()?.Shitterid || 0;
 
     this.ashitService.createAShit(this.newAShit).subscribe(
       (response: AShit) => {
