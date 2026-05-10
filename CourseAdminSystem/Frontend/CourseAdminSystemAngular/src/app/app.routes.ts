@@ -23,5 +23,5 @@ export const routes: Routes = [
   { path: 'shit-search', component: ShitSearch },
   { path: 'page-log-in', component: PageLogIn },
   { path: 'page-sign-up', component: PageSignUp },
-  { path: 'page-review', component: PageReview },
+  { path: 'page-review/:toiletid', component: PageReview },
 ];
