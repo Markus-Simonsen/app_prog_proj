@@ -63,6 +63,10 @@
       >
         Sign me up!
       </button>
+
+      @if (errorMessage) {
+        <span class="error">{{ errorMessage }}</span>
+}
     </div>
   </main>
 </div>

@@ -15,6 +15,9 @@ export class ShitterService {
   getShitter(id: number): Observable<Shitter> {
     return this.http.get<Shitter>(`${this.baseUrl}/shitter/${id}`);
   }
+  login(email: string, password: string): Observable<Shitter> {
+  return this.http.post<Shitter>(`${this.baseUrl}/shitter/login`, { Email: email, Password: password });
+  }
   createShitter(shitter: Shitter): Observable<any> {
     return this.http.post(`${this.baseUrl}/shitter`, shitter);
   }

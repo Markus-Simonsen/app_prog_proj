@@ -39,12 +39,29 @@ namespace CourseAdminSystem.API.Controllers
             {
                 return BadRequest("Shitter info not correct");
             }
+            if (Repository.GetShitterByEmail(shitter.Email) != null)
+            {
+                return Conflict("Email already in use.");
+            }
             bool status = Repository.InsertShitter(shitter);
             if (status)
             {
                 return Ok();
             }
             return BadRequest();
+        }
+
+        [HttpPost("login")]
+        public ActionResult<Shitter> Login([FromBody] Shitter shitter)
+        {
+            if (shitter == null)
+                return BadRequest("Invalid request.");
+
+            Shitter existing = Repository.GetShitterByEmail(shitter.Email);
+            if (existing == null || existing.Password != shitter.Password)
+                return Unauthorized("Invalid email or password.");
+
+            return Ok(existing);
         }
 
         [HttpPut]

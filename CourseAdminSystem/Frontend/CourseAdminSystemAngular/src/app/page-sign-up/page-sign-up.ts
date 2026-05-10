@@ -31,6 +31,8 @@ export class PageSignUp implements OnInit {
     console.log('PageSignUp ngOnInit called');
   }
 
+  errorMessage: string = '';
+
   signUp(): void {
     this.shitterService.createShitter(this.newShitter).subscribe(
       (response) => {
@@ -46,8 +48,12 @@ export class PageSignUp implements OnInit {
         this.router.navigate(['/shit-search']);
       },
       (error) => {
-        console.error('Error creating shitter:', error);
-      },
+        if (error.status === 409) {
+        this.errorMessage = 'An account with this email already exists.';
+        } else {
+          this.errorMessage = 'Something went wrong. Please try again.';
+        }
+      }
     );
   }
 }

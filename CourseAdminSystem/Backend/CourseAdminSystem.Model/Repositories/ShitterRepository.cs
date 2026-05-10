@@ -138,4 +138,32 @@ where shitterid = @shitterid
         bool result = DeleteData(dbConn, cmd);
         return result;
     }
+
+    public Shitter GetShitterByEmail(string email)
+{
+    NpgsqlConnection dbConn = null;
+    try
+    {
+        dbConn = new NpgsqlConnection(ConnectionString);
+        var cmd = dbConn.CreateCommand();
+        cmd.CommandText = "select * from shitter where email = @email";
+        cmd.Parameters.Add("@email", NpgsqlDbType.Text).Value = email;
+        var data = GetData(dbConn, cmd);
+        if (data != null && data.Read())
+        {
+            return new Shitter(Convert.ToInt32(data["shitterid"]))
+            {
+                FirstName = data["firstname"].ToString(),
+                LastName = data["lastname"].ToString(),
+                Email = data["email"].ToString(),
+                Password = data["password"].ToString()
+            };
+        }
+        return null;
+    }
+    finally
+    {
+        dbConn?.Close();
+    }
+}
 }

@@ -8,7 +8,7 @@ namespace CourseAdminSystem.Model.Repositories;
 public class AShitRepository : BaseRepository
 {
     public AShitRepository(IConfiguration configuration) : base(configuration) { }
-    public AShit GetAShitById(int shitid)
+    public virtual AShit GetAShitById(int shitid)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -42,7 +42,7 @@ public class AShitRepository : BaseRepository
             dbConn?.Close();
         }
     }
-    public List<AShit> GetMoreShits()
+    public virtual List<AShit> GetMoreShits()
     {
         NpgsqlConnection dbConn = null;
         var moreshits = new List<AShit>();
@@ -78,7 +78,7 @@ public class AShitRepository : BaseRepository
         }
     }
 
-    public List<AShit> GetAShitsByToiletId(int toiletid, bool jointables)
+    public virtual List<AShit> GetAShitsByToiletId(int toiletid, bool jointables)
     {
         NpgsqlConnection dbConn = null;
         var shits = new List<AShit>();
@@ -153,7 +153,7 @@ where a.toiletid = @toiletid
         }
     }
     //add a new shitter
-    public bool InsertAShit(AShit a)
+    public virtual bool InsertAShit(AShit a)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -182,7 +182,7 @@ values
             dbConn?.Close();
         }
     }
-    public bool UpdateAShit(AShit a)
+    public virtual bool UpdateAShit(AShit a)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
@@ -206,7 +206,7 @@ shitid = @shitid";
         bool result = UpdateData(dbConn, cmd);
         return result;
     }
-    public bool DeleteAShit(int id)
+    public virtual bool DeleteAShit(int id)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
