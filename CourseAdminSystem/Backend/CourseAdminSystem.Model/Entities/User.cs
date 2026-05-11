@@ -1,10 +1,10 @@
 namespace CourseAdminSystem.Model.Entities;
 
-public class Shitter
+public class User
 {
-    public Shitter() { }
-    public Shitter(int id) { Shitterid = id; }
-    public int Shitterid { get; set; }
+    public User() { }
+    public User(int id) { Userid = id; }
+    public int Userid { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }
