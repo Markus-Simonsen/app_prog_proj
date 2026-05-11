@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Shitter } from '../model/shitter';
 import { AuthService } from '../services/auth';
@@ -21,6 +21,7 @@ export class PageLogIn implements OnInit {
 
   Email: string = '';
   Password: string = '';
+  shitters: Shitter[] = []; 
   isLoading: boolean = false;
   errorMessage: string = '';
 
@@ -33,10 +34,9 @@ export class PageLogIn implements OnInit {
     this.authService.login(this.Email, this.Password).subscribe({
       next: () => {
         this.isLoading = false;
-        localStorage.setItem('shitterId', response.Shitterid.toString());
         this.router.navigate(['/shit-search']);
       },
-      (error) => {
+      error: (err) => {
         this.isLoading = false;
         this.errorMessage =
           err.message === 'Invalid email or password.'

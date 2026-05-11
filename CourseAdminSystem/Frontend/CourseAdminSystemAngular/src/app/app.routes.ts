@@ -24,4 +24,5 @@ export const routes: Routes = [
   { path: 'page-log-in', component: PageLogIn },
   { path: 'page-sign-up', component: PageSignUp },
   { path: 'page-review/:toiletid', component: PageReview },
+  { path: 'shit-map/:toiletid/:location', component: ShitMap }
 ];

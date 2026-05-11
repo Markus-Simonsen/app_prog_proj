@@ -1,9 +1,8 @@
 <main>
   <h2>Toilet ID: {{ toiletid }}</h2>
-  <button id="seeOnMapBtn" routerLink="/shit-map/{{ shits[0]?.TheToilet?.Location }}">
-    See on map
-  </button>
-  <!-- <button id="seeOnMapBtn" routerLink="/shit-map/{{ shits[1].ToiletId }}">See on map</button> -->
+  <button id="seeOnMapBtn" routerLink="/shit-map/{{ toiletid }}/{{ shits[0]?.TheToilet?.Location }}">
+  See on map
+</button>
   <div class="shitters-container" id="shittersContainer">
     <div *ngFor="let shit of shits" class="shit-item">
       <p><strong>Name:</strong> {{ shit.TheShitter?.FirstName }} {{ shit.TheShitter?.LastName }}</p>

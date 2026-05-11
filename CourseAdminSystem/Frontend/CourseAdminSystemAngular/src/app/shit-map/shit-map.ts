@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import * as L from 'leaflet';
+import { ToiletService } from '../services/toilet-service';
 
 @Component({
   selector: 'app-shit-map',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './shit-map.html',
   styleUrl: './shit-map.css',
 })
 export class ShitMap {
   location: number = 0;
+  toiletid: number = 0;
   constructor(private route: ActivatedRoute) {}
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.location = +params['location'];
+      this.toiletid = +params['toiletid'];
 
       const map = L.map('map').setView([55.67, 12.56], 10);
 

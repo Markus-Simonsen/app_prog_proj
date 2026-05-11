@@ -22,7 +22,7 @@
   border-radius: 25px;
   font-size: 1rem;
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   align-items: center;
 }
 #searchBtn:disabled {
@@ -78,6 +78,12 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   flex-wrap: wrap;
+}
+
+.signup-prompt {
+  margin-top: 0.5rem;
+  font-size: 14px;
+  color: #576d8c;
 }

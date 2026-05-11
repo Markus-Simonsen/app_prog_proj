@@ -30,7 +30,7 @@
     "@angular/forms": "^21.1.0",
     "@angular/material": "^21.2.7",
     "@angular/platform-browser": "^21.1.0",
-    "@angular/router": "^21.1.0",
+    "@angular/router": "^21.2.12",
     "leaflet": "^1.9.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
@@ -48,6 +48,7 @@
     "karma-coverage": "^2.2.1",
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.2.0",
+    "karma-source-map-support": "^1.4.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
   }
