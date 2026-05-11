@@ -67,6 +67,16 @@ public class ShitterControllerTests
     }
 
     [Fact]
+    public void UpdateShitter_ReturnsOk_WhenUpdateSucceeds()
+    {
+        var shitter = new Shitter(1);
+        _repoMock.Setup(r => r.GetShitterById(1)).Returns(shitter);
+        _repoMock.Setup(r => r.UpdateShitter(shitter)).Returns(true);
+        var result = _controller.UpdateShitter(shitter);
+        Assert.IsType<OkResult>(result);
+    }
+
+    [Fact]
     public void DeleteShitter_ReturnsNoContent_WhenDeleteSucceeds()
     {
         var shitter = new Shitter(1);
@@ -74,5 +84,13 @@ public class ShitterControllerTests
         _repoMock.Setup(r => r.DeleteShitter(1)).Returns(true);
         var result = _controller.DeleteShitter(1);
         Assert.IsType<NoContentResult>(result);
+    }
+
+    [Fact]
+    public void DeleteShitter_ReturnsNotFound_WhenShitterDoesNotExist()
+    {
+        _repoMock.Setup(r => r.GetShitterById(1)).Returns((Shitter)null);
+        var result = _controller.DeleteShitter(1);
+        Assert.IsType<NotFoundObjectResult>(result);
     }
 }

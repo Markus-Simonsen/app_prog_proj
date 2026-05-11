@@ -16,24 +16,24 @@ namespace CourseAdminSystem.API.Controllers
         }
 
         [HttpGet("{Shitterid}")]
-        public ActionResult<Shitter> GetShitter([FromRoute] int Shitterid)
+        public virtual ActionResult<Shitter> GetShitter([FromRoute] int Shitterid)
         {
             Shitter shitter = Repository.GetShitterById(Shitterid);
             if (shitter == null)
             {
-                return NotFound();
+                return NotFound("Shitter with Shitterid " + Shitterid + " not found");
             }
             return Ok(shitter);
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Shitter>> GetShitters()
+        public virtual ActionResult<IEnumerable<Shitter>> GetShitters()
         {
             return Ok(Repository.GetShitters());
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] Shitter shitter)
+        public virtual ActionResult Post([FromBody] Shitter shitter)
         {
             if (shitter == null)
             {
@@ -49,7 +49,7 @@ namespace CourseAdminSystem.API.Controllers
 
         [HttpPut]
 
-        public ActionResult UpdateShitter([FromBody] Shitter shitter)
+        public virtual ActionResult UpdateShitter([FromBody] Shitter shitter)
         {
             if (shitter == null)
             {
@@ -68,7 +68,7 @@ namespace CourseAdminSystem.API.Controllers
             return BadRequest("Something went wrong");
         }
         [HttpDelete("{Shitterid}")]
-        public ActionResult DeleteShitter([FromRoute] int Shitterid)
+        public virtual ActionResult DeleteShitter([FromRoute] int Shitterid)
         {
             Shitter existingShitter = Repository.GetShitterById(Shitterid);
             if (existingShitter == null)

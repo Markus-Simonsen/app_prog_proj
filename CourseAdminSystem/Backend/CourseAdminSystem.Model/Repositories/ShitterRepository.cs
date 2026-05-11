@@ -8,7 +8,7 @@ namespace CourseAdminSystem.Model.Repositories;
 public class ShitterRepository : BaseRepository
 {
     public ShitterRepository(IConfiguration configuration) : base(configuration) { }
-    public Shitter GetShitterById(int shitterid)
+    public virtual Shitter GetShitterById(int shitterid)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -41,7 +41,7 @@ public class ShitterRepository : BaseRepository
             dbConn?.Close();
         }
     }
-    public List<Shitter> GetShitters()
+    public virtual List<Shitter> GetShitters()
     {
         NpgsqlConnection dbConn = null;
         var shitters = new List<Shitter>();
@@ -76,7 +76,7 @@ public class ShitterRepository : BaseRepository
         }
     }
     //add a new shitter
-    public bool InsertShitter(Shitter s)
+    public virtual bool InsertShitter(Shitter s)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -104,7 +104,7 @@ values
             dbConn?.Close();
         }
     }
-    public bool UpdateShitter(Shitter s)
+    public virtual bool UpdateShitter(Shitter s)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
@@ -124,7 +124,7 @@ shitterid = @shitterid";
         bool result = UpdateData(dbConn, cmd);
         return result;
     }
-    public bool DeleteShitter(int Shitterid)
+    public virtual bool DeleteShitter(int Shitterid)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();

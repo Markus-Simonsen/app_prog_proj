@@ -90,8 +90,8 @@ public class AShitRepository : BaseRepository
             {
                 cmd.CommandText = @"
 select a.*, s.*, t.* from ashit a
-join shitter s on a.shitterid = s.shitterid
-join toilet t on a.toiletid = t.toiletid
+inner join shitter s on a.shitterid = s.shitterid
+inner join toilet t on a.toiletid = t.toiletid
 where a.toiletid = @toiletid
 ";
                 cmd.Parameters.Add("@toiletid", NpgsqlDbType.Integer).Value = toiletid;
