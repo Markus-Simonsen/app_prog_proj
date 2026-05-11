@@ -11,8 +11,8 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<ShitterRepository, ShitterRepository>();
-builder.Services.AddScoped<AShitRepository, AShitRepository>();
+builder.Services.AddScoped<UserRepository, UserRepository>();
+builder.Services.AddScoped<VisitRepository, VisitRepository>();
 builder.Services.AddScoped<ToiletRepository, ToiletRepository>();
 
 var app = builder.Build();

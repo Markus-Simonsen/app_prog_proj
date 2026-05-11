@@ -5,10 +5,10 @@ using Npgsql;
 using NpgsqlTypes;
 namespace CourseAdminSystem.Model.Repositories;
 
-public class AShitRepository : BaseRepository
+public class VisitRepository : BaseRepository
 {
-    public AShitRepository(IConfiguration configuration) : base(configuration) { }
-    public virtual AShit GetAShitById(int shitid)
+    public VisitRepository(IConfiguration configuration) : base(configuration) { }
+    public Visit GetVisitById(int visitid)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -17,17 +17,17 @@ public class AShitRepository : BaseRepository
             dbConn = new NpgsqlConnection(ConnectionString);
             //creating an SQL command
             var cmd = dbConn.CreateCommand();
-            cmd.CommandText = "select * from ashit where shitid = @shitid";
-            cmd.Parameters.Add("@shitid", NpgsqlDbType.Integer).Value = shitid;
+            cmd.CommandText = "select * from visit where visitid = @visitid";
+            cmd.Parameters.Add("@visitid", NpgsqlDbType.Integer).Value = visitid;
             //call the base method to get data
             var data = GetData(dbConn, cmd);
             if (data != null)
             {
                 if (data.Read()) //every time loop runs it reads next like from fetched rows
                 {
-                    return new AShit(Convert.ToInt32(data["shitid"]))
+                    return new Visit(Convert.ToInt32(data["visitid"]))
                     {
-                        Shitterid = Convert.ToInt32(data["shitterid"]), //question 1: isn't shitterID under ashit equal id under shitter?
+                        Userid = Convert.ToInt32(data["userid"]), //question 1: isn't userID under visit equal id under user?
                         Toiletid = Convert.ToInt32(data["toiletid"]),
                         Time = DateTime.Parse(data["time"].ToString()),
                         Rating = Convert.ToInt32(data["rating"]),
@@ -42,35 +42,35 @@ public class AShitRepository : BaseRepository
             dbConn?.Close();
         }
     }
-    public virtual List<AShit> GetMoreShits()
+    public List<AShit> GetMoreShits()
     {
         NpgsqlConnection dbConn = null;
-        var moreshits = new List<AShit>();
+        var morevisits = new List<Visit>();
         try
         {
             //create a new connection for database
             dbConn = new NpgsqlConnection(ConnectionString);
             //creating an SQL command
             var cmd = dbConn.CreateCommand();
-            cmd.CommandText = "select * from ashit";
+            cmd.CommandText = "select * from visit";
             //call the base method to get data
             var data = GetData(dbConn, cmd);
             if (data != null)
             {
                 while (data.Read()) //every time loop runs it reads next like from fetched rows
                 {
-                    AShit a = new AShit(Convert.ToInt32(data["shitid"]))
+                    Visit a = new Visit(Convert.ToInt32(data["visitid"]))
                     {
-                        Shitterid = Convert.ToInt32(data["shitterid"]),
+                        Userid = Convert.ToInt32(data["userid"]),
                         Toiletid = Convert.ToInt32(data["toiletid"]),
                         Time = DateTime.Parse(data["time"].ToString()),
                         Rating = Convert.ToInt32(data["rating"]),
                         Review = data["review"].ToString()
                     };
-                    moreshits.Add(a);
+                    morevisits.Add(a);
                 }
             }
-            return moreshits;
+            return morevisits;
         }
         finally
         {
@@ -78,10 +78,10 @@ public class AShitRepository : BaseRepository
         }
     }
 
-    public virtual List<AShit> GetAShitsByToiletId(int toiletid, bool jointables)
+    public List<AShit> GetAShitsByToiletId(int toiletid, bool jointables)
     {
         NpgsqlConnection dbConn = null;
-        var shits = new List<AShit>();
+        var visits = new List<Visit>();
         try
         {
             dbConn = new NpgsqlConnection(ConnectionString);
@@ -89,10 +89,10 @@ public class AShitRepository : BaseRepository
             if (jointables)
             {
                 cmd.CommandText = @"
-select a.*, s.*, t.* from ashit a
-join shitter s on a.shitterid = s.shitterid
-join toilet t on a.toiletid = t.toiletid
-where a.toiletid = @toiletid
+select v.*, u.*, t.* from visit v
+inner join user u on v.userid = u.userid
+inner join toilet t on v.toiletid = t.toiletid
+where v.toiletid = @toiletid
 ";
                 cmd.Parameters.Add("@toiletid", NpgsqlDbType.Integer).Value = toiletid;
                 var data = GetData(dbConn, cmd);
@@ -100,14 +100,14 @@ where a.toiletid = @toiletid
                 {
                     while (data.Read())
                     {
-                        AShit a = new AShit(Convert.ToInt32(data["shitid"]))
+                        Visit a = new Visit(Convert.ToInt32(data["visitid"]))
                         {
-                            Shitterid = Convert.ToInt32(data["shitterid"]),
+                            Userid = Convert.ToInt32(data["userid"]),
                             Toiletid = Convert.ToInt32(data["toiletid"]),
                             Time = DateTime.Parse(data["time"].ToString()),
                             Rating = Convert.ToInt32(data["rating"]),
                             Review = data["review"].ToString(),
-                            TheShitter = new Shitter(Convert.ToInt32(data["shitterid"]))
+                            TheUser = new User(Convert.ToInt32(data["userid"]))
                             {
                                 FirstName = data["firstname"].ToString(),
                                 LastName = data["lastname"].ToString(),
@@ -119,33 +119,33 @@ where a.toiletid = @toiletid
                                 Location = Convert.ToInt32(data["location"]),
                             }
                         };
-                        shits.Add(a);
+                        visits.Add(a);
                     }
                 }
             }
             else
             {
 
-                cmd.CommandText = "select * from ashit where toiletid = @toiletid";
+                cmd.CommandText = "select * from visit where toiletid = @toiletid";
                 cmd.Parameters.Add("@toiletid", NpgsqlDbType.Integer).Value = toiletid;
                 var data = GetData(dbConn, cmd);
                 if (data != null)
                 {
                     while (data.Read())
                     {
-                        AShit a = new AShit(Convert.ToInt32(data["shitid"]))
+                        Visit a = new Visit(Convert.ToInt32(data["visitid"]))
                         {
-                            Shitterid = Convert.ToInt32(data["shitterid"]),
+                            Userid = Convert.ToInt32(data["userid"]),
                             Toiletid = Convert.ToInt32(data["toiletid"]),
                             Time = DateTime.Parse(data["time"].ToString()),
                             Rating = Convert.ToInt32(data["rating"]),
                             Review = data["review"].ToString()
                         };
-                        shits.Add(a);
+                        visits.Add(a);
                     }
                 }
             }
-            return shits;
+            return visits;
         }
         finally
         {
@@ -153,7 +153,7 @@ where a.toiletid = @toiletid
         }
     }
     //add a new shitter
-    public virtual bool InsertAShit(AShit a)
+    public bool InsertAShit(AShit a)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -161,14 +161,14 @@ where a.toiletid = @toiletid
             dbConn = new NpgsqlConnection(ConnectionString);
             var cmd = dbConn.CreateCommand();
             cmd.CommandText = @"
-insert into ashit
-(shitterid, toiletid, time, rating, review)
+insert into visit
+(userid, toiletid, time, rating, review)
 values
-(@shitterid, @toiletid, @time, @rating, @review)
+(@userid, @toiletid, @time, @rating, @review)
 ";
             //adding parameters in a better way
-            //cmd.Parameters.AddWithValue("@shitid", NpgsqlDbType.Integer, a.ShitID);
-            cmd.Parameters.AddWithValue("@shitterid", NpgsqlDbType.Integer, a.Shitterid);
+            //cmd.Parameters.AddWithValue("@visitid", NpgsqlDbType.Integer, a.VisitID);
+            cmd.Parameters.AddWithValue("@userid", NpgsqlDbType.Integer, a.Userid);
             cmd.Parameters.AddWithValue("@toiletid", NpgsqlDbType.Integer, a.Toiletid);
             cmd.Parameters.AddWithValue("@time", NpgsqlDbType.Date, a.Time);
             cmd.Parameters.AddWithValue("@rating", NpgsqlDbType.Integer, a.Rating);
@@ -182,40 +182,40 @@ values
             dbConn?.Close();
         }
     }
-    public virtual bool UpdateAShit(AShit a)
+    public bool UpdateAShit(AShit a)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
         cmd.CommandText = @"
-update ashit set
-shitid=@shitid,
-shitterid=@shitterid,
+update visit set
+visitid=@visitid,
+userid=@userid,
 toiletid=@toiletid,
 time=@time,
 rating=@rating,
 review=@review
 where
-shitid = @shitid";
-        cmd.Parameters.AddWithValue("@shitid", NpgsqlDbType.Integer, a.ShitID);
-        cmd.Parameters.AddWithValue("@shitterid", NpgsqlDbType.Integer, a.Shitterid);
+visitid = @visitid";
+        cmd.Parameters.AddWithValue("@visitid", NpgsqlDbType.Integer, a.VisitID);
+        cmd.Parameters.AddWithValue("@userid", NpgsqlDbType.Integer, a.Userid);
         cmd.Parameters.AddWithValue("@toiletid", NpgsqlDbType.Integer, a.Toiletid);
         cmd.Parameters.AddWithValue("@time", NpgsqlDbType.Date, a.Time);
         cmd.Parameters.AddWithValue("@rating", NpgsqlDbType.Integer, a.Rating);
         cmd.Parameters.AddWithValue("@review", NpgsqlDbType.Text, a.Review);
-        cmd.Parameters.AddWithValue("@shitid", NpgsqlDbType.Integer, a.ShitID);
+        cmd.Parameters.AddWithValue("@visitid", NpgsqlDbType.Integer, a.VisitID);
         bool result = UpdateData(dbConn, cmd);
         return result;
     }
-    public virtual bool DeleteAShit(int id)
+    public bool DeleteAShit(int id)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
         cmd.CommandText = @"
-delete from ashit
-where shitid = @shitid
+delete from visit
+where visitid = @visitid
 ";
         //adding parameters in a better way
-        cmd.Parameters.AddWithValue("@shitid", NpgsqlDbType.Integer, id);
+        cmd.Parameters.AddWithValue("@visitid", NpgsqlDbType.Integer, id);
         //will return true if all goes well
         bool result = DeleteData(dbConn, cmd);
         return result;

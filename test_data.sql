@@ -1,10 +1,10 @@
--- Insert users into shitter table
-INSERT INTO "shitter" ("shitterid", "email", "password", "firstname", "lastname") VALUES
-(1, 'john.doe@example.com', 'hashed_password_abc123', 'John', 'Doe'),
-(2, 'jane.smith@example.com', 'hashed_password_def456', 'Jane', 'Smith'),
-(3, 'bob.wilson@example.com', 'hashed_password_ghi789', 'Bob', 'Wilson'),
-(4, 'alice.jones@example.com', 'hashed_password_jkl012', 'Alice', 'Jones'),
-(5, 'charlie.brown@example.com', 'hashed_password_mno345', 'Charlie', 'Brown');
+-- Insert users into user table
+INSERT INTO "user" ("userid", "email", "password", "firstname", "lastname") VALUES
+(1, 'john.doe@example.com', crypt('password_abc123', gen_salt('bf')), 'John', 'Doe'),
+(2, 'jane.smith@example.com', crypt('password_def456', gen_salt('bf')), 'Jane', 'Smith'),
+(3, 'bob.wilson@example.com', crypt('password_ghi789', gen_salt('bf')), 'Bob', 'Wilson'),
+(4, 'alice.jones@example.com', crypt('password_jkl012', gen_salt('bf')), 'Alice', 'Jones'),
+(5, 'charlie.brown@example.com', crypt('password_mno345', gen_salt('bf')), 'Charlie', 'Brown');
 
 -- Insert toilets into toilet table
 INSERT INTO "toilet" ("toiletid", "location") VALUES
@@ -15,7 +15,7 @@ INSERT INTO "toilet" ("toiletid", "location") VALUES
 (105, 55651261);
 
 -- Insert reviews into a_shit table
-INSERT INTO "ashit" ("shitid", "shitterid", "toiletid", "time", "rating", "review") VALUES
+INSERT INTO "visit" ("visitid", "userid", "toiletid", "time", "rating", "review") VALUES
 (1001, 1, 101, '2025-01-15', 4, 'Clean and well maintained'),
 (1002, 2, 102, '2025-02-20', 2, 'Needs better ventilation'),
 (1003, 3, 103, '2025-03-10', 5, 'Excellent facilities!'),
