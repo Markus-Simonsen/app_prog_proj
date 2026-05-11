@@ -1,22 +1,24 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AShit } from '../model/ashit';
 import { AShitService } from '../services/ashit-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-shit-info',
-  imports: [CommonModule, FormsModule, RouterLink],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './shit-info.html',
   styleUrl: './shit-info.css',
 })
 export class ShitInfo implements OnInit {
+  currentUserId?: number;
   constructor(
     private ashitService: AShitService,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
   toiletid: number = 0;
   shits: AShit[] = [];
@@ -31,6 +33,7 @@ export class ShitInfo implements OnInit {
 
   ngOnInit(): void {
     console.log('AshitList ngOnInit called');
+    this.currentUserId = Number(localStorage.getItem('currentUserId')) || undefined;
     this.route.params.subscribe((params: any) => {
       this.toiletid = +params['toiletid'];
       this.loadShitsFromToilet(this.toiletid, true);
@@ -53,5 +56,30 @@ export class ShitInfo implements OnInit {
         console.error('API error fetching more shits:', error);
       },
     );
+  }
+
+  onLeaveReview(): void {
+    if (this.currentUserId) {
+      this.router.navigate(['/page-review'], {
+        queryParams: {
+          toiletid: this.toiletid,
+          userid: this.currentUserId,
+        },
+      });
+      return;
+    }
+
+    this.router.navigate(['/page-log-in'], {
+      queryParams: {
+        redirectTo: `/shit-info/${this.toiletid}`,
+      },
+    });
+  }
+
+  onSeeOnMap(): void {
+    const location = this.shits[0]?.TheToilet?.Location;
+    if (location) {
+      this.router.navigate(['/shit-map', location]);
+    }
   }
 }

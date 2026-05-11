@@ -43,8 +43,18 @@ export class PageLogIn implements OnInit {
     this.isLoading = true;                // show spinner / disable button
 
     this.shitterService.getShitters().subscribe({
-      next: () => {
+      next: (shitters: any[]) => {
         this.isLoading = false;
+        const user = shitters.find(
+          (s) => s.Email === this.Email && s.Password === this.Password,
+        );
+
+        if (!user) {
+          this.errorMessage = 'Invalid email or password.';
+          return;
+        }
+
+        localStorage.setItem('currentUserId', String(user.Shitterid));
         this.router.navigate(['/shit-search']);
       },
       error: (err) => {

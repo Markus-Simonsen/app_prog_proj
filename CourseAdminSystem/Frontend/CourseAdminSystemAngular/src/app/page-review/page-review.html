@@ -2,6 +2,13 @@
   <main class="content">
     <h1 class="main-title">How was your poo experience?</h1>
     <p class="subtitle">On a scale of 1 to 5 happy poop emojis</p>
+    <div class="review-context">
+      <p *ngIf="newAShit.Toiletid">Toilet ID: {{ newAShit.Toiletid }}</p>
+      <p *ngIf="currentUserId">User ID: {{ currentUserId }}</p>
+      <p *ngIf="!currentUserId" class="login-warning">
+        Please log in before submitting a review.
+      </p>
+    </div>
 
     <div class="emoji-rating">
       @for (star of [1, 2, 3, 4, 5]; track star) {

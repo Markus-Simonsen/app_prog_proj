@@ -1,6 +1,6 @@
 <main>
   <h2>Toilet ID: {{ toiletid }}</h2>
-  <button id="seeOnMapBtn" routerLink="/shit-map/{{ shits[0]?.TheToilet?.Location }}">
+  <button id="seeOnMapBtn" (click)="onSeeOnMap()">
     See on map
   </button>
   <!-- <button id="seeOnMapBtn" routerLink="/shit-map/{{ shits[1].ToiletId }}">See on map</button> -->
@@ -14,5 +14,10 @@
     </div>
     <p *ngIf="shits.length === 0">No shits found for this toilet.</p>
   </div>
-  <button id="leaveReviewBtn">Leave your review!</button>
+  <button id="leaveReviewBtn" (click)="onLeaveReview()">
+    Leave your review!
+  </button>
+  <p *ngIf="!currentUserId" class="login-hint">
+    You must log in before leaving a review.
+  </p>
 </main>
