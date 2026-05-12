@@ -9,8 +9,8 @@ namespace CourseAdminSystem.API.Controllers
     [ApiController]
     public class ToiletController : ControllerBase
     {
-        protected ToiletRepository Repository { get; }
-        public ToiletController(ToiletRepository repository)
+        protected IToiletRepository Repository { get; }
+        public ToiletController(IToiletRepository repository)
         {
             Repository = repository;
         }

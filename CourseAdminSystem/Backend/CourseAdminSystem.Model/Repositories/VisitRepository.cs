@@ -5,10 +5,10 @@ using Npgsql;
 using NpgsqlTypes;
 namespace CourseAdminSystem.Model.Repositories;
 
-public class VisitRepository : BaseRepository
+public class VisitRepository : BaseRepository, IVisitRepository
 {
     public VisitRepository(IConfiguration configuration) : base(configuration) { }
-    public Visit GetVisitById(int visitid)
+    public virtual Visit GetVisitById(int visitid)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -42,7 +42,7 @@ public class VisitRepository : BaseRepository
             dbConn?.Close();
         }
     }
-    public List<Visit> GetMoreVisits()
+    public virtual List<Visit> GetMoreVisits()
     {
         NpgsqlConnection dbConn = null;
         var morevisits = new List<Visit>();
@@ -78,7 +78,7 @@ public class VisitRepository : BaseRepository
         }
     }
 
-    public List<Visit> GetVisitsByToiletId(int toiletid, bool jointables)
+    public virtual List<Visit> GetVisitsByToiletId(int toiletid, bool jointables)
     {
         NpgsqlConnection dbConn = null;
         var visits = new List<Visit>();
@@ -90,7 +90,7 @@ public class VisitRepository : BaseRepository
             {
                 cmd.CommandText = @"
 select v.*, u.*, t.* from visit v
-inner join user u on v.userid = u.userid
+inner join ""user"" u on v.userid = u.userid
 inner join toilet t on v.toiletid = t.toiletid
 where v.toiletid = @toiletid
 ";
@@ -153,7 +153,7 @@ where v.toiletid = @toiletid
         }
     }
     //add a new user
-    public bool InsertVisit(Visit a)
+    public virtual bool InsertVisit(Visit a)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -182,7 +182,7 @@ values
             dbConn?.Close();
         }
     }
-    public bool UpdateVisit(Visit a)
+    public virtual bool UpdateVisit(Visit a)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
@@ -206,7 +206,7 @@ visitid = @visitid";
         bool result = UpdateData(dbConn, cmd);
         return result;
     }
-    public bool DeleteVisit(int id)
+    public virtual bool DeleteVisit(int id)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();

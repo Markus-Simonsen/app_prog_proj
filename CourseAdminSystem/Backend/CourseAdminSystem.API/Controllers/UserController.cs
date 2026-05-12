@@ -9,8 +9,8 @@ namespace CourseAdminSystem.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        protected UserRepository Repository { get; }
-        public UserController(UserRepository repository)
+        protected IUserRepository Repository { get; }
+        public UserController(IUserRepository repository)
         {
             Repository = repository;
         }
@@ -54,8 +54,11 @@ namespace CourseAdminSystem.API.Controllers
                 return BadRequest("Invalid request.");
 
             User existing = Repository.GetUserByEmail(user.Email);
-            if (existing == null || existing.Password != user.Password)
+            if (existing == null || !Repository.VerifyPassword(user.Email, user.Password))
+            {
+                Console.WriteLine("condition: " + (existing == null) + " || " + (!Repository.VerifyPassword(user.Email, user.Password)));
                 return Unauthorized("Invalid email or password.");
+            }
 
             return Ok(existing);
         }

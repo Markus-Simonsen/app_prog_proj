@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 public class VisitControllerTests
 {
-    private readonly Mock<VisitRepository> _repoMock;
+    private readonly Mock<IVisitRepository> _repoMock;
     private readonly VisitController _controller;
     public VisitControllerTests()
     {
-        _repoMock = new Mock<VisitRepository>(null);
+        _repoMock = new Mock<IVisitRepository>();
         _controller = new VisitController(_repoMock.Object);
     }
     [Fact]

@@ -5,9 +5,12 @@ using Npgsql;
 using NpgsqlTypes;
 namespace CourseAdminSystem.Model.Repositories;
 
-public class UserRepository : BaseRepository
+public class UserRepository : BaseRepository, IUserRepository
 {
-    public UserRepository(IConfiguration configuration) : base(configuration) { }
+    public UserRepository(IConfiguration configuration) : base(configuration)
+    {
+        EnsurePgcryptoEnabled();
+    }
     public virtual User GetUserById(int userid)
     {
         NpgsqlConnection dbConn = null;
@@ -17,7 +20,7 @@ public class UserRepository : BaseRepository
             dbConn = new NpgsqlConnection(ConnectionString);
             //creating an SQL command
             var cmd = dbConn.CreateCommand();
-            cmd.CommandText = "select * from user where userid = @userid";
+            cmd.CommandText = @"select * from ""user"" where userid = @userid";
             cmd.Parameters.Add("@userid", NpgsqlDbType.Integer).Value = userid;
             //call the base method to get data
             var data = GetData(dbConn, cmd);
@@ -51,7 +54,7 @@ public class UserRepository : BaseRepository
             dbConn = new NpgsqlConnection(ConnectionString);
             //creating an SQL command
             var cmd = dbConn.CreateCommand();
-            cmd.CommandText = "select * from user";
+            cmd.CommandText = @"select * from ""user""";
             //call the base method to get data
             var data = GetData(dbConn, cmd);
             if (data != null)
@@ -75,7 +78,7 @@ public class UserRepository : BaseRepository
             dbConn?.Close();
         }
     }
-    //add a new user
+    //add a new ""user""
     public virtual bool InsertUser(User s)
     {
         NpgsqlConnection dbConn = null;
@@ -84,10 +87,10 @@ public class UserRepository : BaseRepository
             dbConn = new NpgsqlConnection(ConnectionString);
             var cmd = dbConn.CreateCommand();
             cmd.CommandText = @"
-insert into user
-(firstname,lastname, email, password)
+insert into ""user""
+(firstname, lastname, email, password)
 values
-(@firstname,@lastname, @email, @password)
+(@firstname, @lastname, @email, crypt(@password, gen_salt('bf')))
 ";
             //adding parameters in a better way
             //cmd.Parameters.AddWithValue("@userid", NpgsqlDbType.Bigint, s.Userid);
@@ -109,11 +112,11 @@ values
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
         cmd.CommandText = @"
-update user set
-firstname=@firstname,
-lastname=@lastname,
-email=@email,
-password=@password
+update ""user"" set
+firstname = @firstname,
+lastname = @lastname,
+email = @email,
+password = crypt(@password, gen_salt('bf'))
 where
 userid = @userid";
         cmd.Parameters.AddWithValue("@firstname", NpgsqlDbType.Text, s.FirstName);
@@ -129,7 +132,7 @@ userid = @userid";
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
         cmd.CommandText = @"
-delete from user
+delete from ""user""
 where userid = @userid
 ";
         //adding parameters in a better way
@@ -146,7 +149,7 @@ where userid = @userid
         {
             dbConn = new NpgsqlConnection(ConnectionString);
             var cmd = dbConn.CreateCommand();
-            cmd.CommandText = "select * from user where email = @email";
+            cmd.CommandText = @"select * from ""user"" where email = @email";
             cmd.Parameters.Add("@email", NpgsqlDbType.Text).Value = email;
             var data = GetData(dbConn, cmd);
             if (data != null && data.Read())
@@ -160,6 +163,45 @@ where userid = @userid
                 };
             }
             return null;
+        }
+        finally
+        {
+            dbConn?.Close();
+        }
+    }
+
+    public void EnsurePgcryptoEnabled()
+    {
+        NpgsqlConnection dbConn = null;
+        try
+        {
+            dbConn = new NpgsqlConnection(ConnectionString);
+            var cmd = dbConn.CreateCommand();
+            cmd.CommandText = "CREATE EXTENSION IF NOT EXISTS pgcrypto;";
+            InsertData(dbConn, cmd);
+        }
+        finally
+        {
+            dbConn?.Close();
+        }
+    }
+
+    public bool VerifyPassword(string email, string password)
+    {
+        NpgsqlConnection dbConn = null;
+        try
+        {
+            dbConn = new NpgsqlConnection(ConnectionString);
+            var cmd = dbConn.CreateCommand();
+            cmd.CommandText = @"select crypt(@password, password) = password as is_valid from ""user"" where email = @email";
+            cmd.Parameters.AddWithValue("@email", NpgsqlDbType.Text, email);
+            cmd.Parameters.AddWithValue("@password", NpgsqlDbType.Text, password);
+            var data = GetData(dbConn, cmd);
+            if (data != null && data.Read())
+            {
+                return Convert.ToBoolean(data["is_valid"]);
+            }
+            return false;
         }
         finally
         {

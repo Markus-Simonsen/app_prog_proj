@@ -5,10 +5,10 @@ using Npgsql;
 using NpgsqlTypes;
 namespace CourseAdminSystem.Model.Repositories;
 
-public class ToiletRepository : BaseRepository
+public class ToiletRepository : BaseRepository, IToiletRepository
 {
     public ToiletRepository(IConfiguration configuration) : base(configuration) { }
-    public Toilet GetToiletById(int Toiletid)
+    public virtual Toilet GetToiletById(int Toiletid)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -39,7 +39,7 @@ public class ToiletRepository : BaseRepository
             dbConn?.Close();
         }
     }
-    public List<Toilet> GetToilets()
+    public virtual List<Toilet> GetToilets()
     {
         NpgsqlConnection dbConn = null;
         var toilet = new List<Toilet>();
@@ -66,13 +66,13 @@ public class ToiletRepository : BaseRepository
             }
             return toilet;
         }
-        finally 
+        finally
         {
             dbConn?.Close();
         }
     }
     //add a new toilet
-    public Toilet InsertToilet(Toilet t)
+    public virtual Toilet InsertToilet(Toilet t)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -98,7 +98,7 @@ RETURNING toiletid
             dbConn?.Close();
         }
     }
-    public bool UpdateToilet(Toilet t)
+    public virtual bool UpdateToilet(Toilet t)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
@@ -112,7 +112,7 @@ where
         bool result = UpdateData(dbConn, cmd);
         return result;
     }
-    public bool DeleteToilet(int Toiletid)
+    public virtual bool DeleteToilet(int Toiletid)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();

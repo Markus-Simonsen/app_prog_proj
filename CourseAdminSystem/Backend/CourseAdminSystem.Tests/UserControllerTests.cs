@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 public class UserControllerTests
 {
-    private readonly Mock<UserRepository> _repoMock;
+    private readonly Mock<IUserRepository> _repoMock;
     private readonly UserController _controller;
     public UserControllerTests()
     {
-        _repoMock = new Mock<UserRepository>(null);
+        _repoMock = new Mock<IUserRepository>();
         _controller = new UserController(_repoMock.Object);
     }
     [Fact]
