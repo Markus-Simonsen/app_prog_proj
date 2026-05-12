@@ -1,9 +1,9 @@
 namespace CourseAdminSystem.Model.Entities;
 
-public class visit
+public class Visit
 {
-    public visit() { }
-    public visit(int visitid) { VisitID = visitid; }
+    public Visit() { }
+    public Visit(int visitid) { VisitID = visitid; }
     public int VisitID { get; set; }
     public int Userid { get; set; }
     public int Toiletid { get; set; }

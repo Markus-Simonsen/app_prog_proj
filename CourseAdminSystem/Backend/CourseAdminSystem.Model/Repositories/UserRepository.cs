@@ -139,31 +139,31 @@ where userid = @userid
         return result;
     }
 
-    public Shitter GetShitterByEmail(string email)
-{
-    NpgsqlConnection dbConn = null;
-    try
+    public User GetUserByEmail(string email)
     {
-        dbConn = new NpgsqlConnection(ConnectionString);
-        var cmd = dbConn.CreateCommand();
-        cmd.CommandText = "select * from shitter where email = @email";
-        cmd.Parameters.Add("@email", NpgsqlDbType.Text).Value = email;
-        var data = GetData(dbConn, cmd);
-        if (data != null && data.Read())
+        NpgsqlConnection dbConn = null;
+        try
         {
-            return new Shitter(Convert.ToInt32(data["shitterid"]))
+            dbConn = new NpgsqlConnection(ConnectionString);
+            var cmd = dbConn.CreateCommand();
+            cmd.CommandText = "select * from user where email = @email";
+            cmd.Parameters.Add("@email", NpgsqlDbType.Text).Value = email;
+            var data = GetData(dbConn, cmd);
+            if (data != null && data.Read())
             {
-                FirstName = data["firstname"].ToString(),
-                LastName = data["lastname"].ToString(),
-                Email = data["email"].ToString(),
-                Password = data["password"].ToString()
-            };
+                return new User(Convert.ToInt32(data["userid"]))
+                {
+                    FirstName = data["firstname"].ToString(),
+                    LastName = data["lastname"].ToString(),
+                    Email = data["email"].ToString(),
+                    Password = data["password"].ToString()
+                };
+            }
+            return null;
         }
-        return null;
+        finally
+        {
+            dbConn?.Close();
+        }
     }
-    finally
-    {
-        dbConn?.Close();
-    }
-}
 }

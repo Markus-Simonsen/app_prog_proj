@@ -42,7 +42,7 @@ public class VisitRepository : BaseRepository
             dbConn?.Close();
         }
     }
-    public List<AShit> GetMoreShits()
+    public List<Visit> GetMoreVisits()
     {
         NpgsqlConnection dbConn = null;
         var morevisits = new List<Visit>();
@@ -78,7 +78,7 @@ public class VisitRepository : BaseRepository
         }
     }
 
-    public List<AShit> GetAShitsByToiletId(int toiletid, bool jointables)
+    public List<Visit> GetVisitsByToiletId(int toiletid, bool jointables)
     {
         NpgsqlConnection dbConn = null;
         var visits = new List<Visit>();
@@ -152,8 +152,8 @@ where v.toiletid = @toiletid
             dbConn?.Close();
         }
     }
-    //add a new shitter
-    public bool InsertAShit(AShit a)
+    //add a new user
+    public bool InsertVisit(Visit a)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -182,7 +182,7 @@ values
             dbConn?.Close();
         }
     }
-    public bool UpdateAShit(AShit a)
+    public bool UpdateVisit(Visit a)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
@@ -206,7 +206,7 @@ visitid = @visitid";
         bool result = UpdateData(dbConn, cmd);
         return result;
     }
-    public bool DeleteAShit(int id)
+    public bool DeleteVisit(int id)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();

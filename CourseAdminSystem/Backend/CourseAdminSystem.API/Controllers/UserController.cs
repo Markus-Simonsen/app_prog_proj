@@ -47,6 +47,19 @@ namespace CourseAdminSystem.API.Controllers
             return BadRequest();
         }
 
+        [HttpPost("login")]
+        public ActionResult<User> Login([FromBody] User user)
+        {
+            if (user == null)
+                return BadRequest("Invalid request.");
+
+            User existing = Repository.GetUserByEmail(user.Email);
+            if (existing == null || existing.Password != user.Password)
+                return Unauthorized("Invalid email or password.");
+
+            return Ok(existing);
+        }
+
         [HttpPut]
 
         public virtual ActionResult UpdateUser([FromBody] User user)
