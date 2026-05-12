@@ -2,8 +2,7 @@ namespace
 CourseAdminSystem.Model.Repositories;
 
 using Npgsql;
-using
-Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 public class BaseRepository
 {
     protected string ConnectionString { get; }

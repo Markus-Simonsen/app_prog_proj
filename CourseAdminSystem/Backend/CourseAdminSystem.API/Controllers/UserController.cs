@@ -9,8 +9,8 @@ namespace CourseAdminSystem.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        protected IUserRepository Repository { get; }
-        public UserController(IUserRepository repository)
+        protected UserRepository Repository { get; }
+        public UserController(UserRepository repository)
         {
             Repository = repository;
         }

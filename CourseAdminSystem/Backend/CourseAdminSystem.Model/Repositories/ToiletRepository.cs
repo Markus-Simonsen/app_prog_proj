@@ -5,7 +5,7 @@ using Npgsql;
 using NpgsqlTypes;
 namespace CourseAdminSystem.Model.Repositories;
 
-public class ToiletRepository : BaseRepository, IToiletRepository
+public class ToiletRepository : BaseRepository
 {
     public ToiletRepository(IConfiguration configuration) : base(configuration) { }
     public virtual Toilet GetToiletById(int Toiletid)

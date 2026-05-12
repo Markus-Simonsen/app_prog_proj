@@ -5,7 +5,7 @@ using Npgsql;
 using NpgsqlTypes;
 namespace CourseAdminSystem.Model.Repositories;
 
-public class UserRepository : BaseRepository, IUserRepository
+public class UserRepository : BaseRepository
 {
     public UserRepository(IConfiguration configuration) : base(configuration)
     {
@@ -172,18 +172,19 @@ where userid = @userid
 
     public void EnsurePgcryptoEnabled()
     {
-        NpgsqlConnection dbConn = null;
-        try
-        {
-            dbConn = new NpgsqlConnection(ConnectionString);
-            var cmd = dbConn.CreateCommand();
-            cmd.CommandText = "CREATE EXTENSION IF NOT EXISTS pgcrypto;";
-            InsertData(dbConn, cmd);
-        }
-        finally
-        {
-            dbConn?.Close();
-        }
+
+        // NpgsqlConnection dbConn = null;
+        // try
+        // {
+        //     dbConn = new NpgsqlConnection(ConnectionString);
+        //     var cmd = dbConn.CreateCommand();
+        //     cmd.CommandText = "--CREATE EXTENSION IF NOT EXISTS pgcrypto;";
+        //     InsertData(dbConn, cmd);
+        // }
+        // finally
+        // {
+        //     dbConn?.Close();
+        // }
     }
 
     public bool VerifyPassword(string email, string password)

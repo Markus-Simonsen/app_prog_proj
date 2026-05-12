@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 public class ToiletControllerTests
 {
-    private readonly Mock<IToiletRepository> _repoMock;
+    private readonly Mock<ToiletRepository> _repoMock;
     private readonly ToiletController _controller;
     public ToiletControllerTests()
     {
-        _repoMock = new Mock<IToiletRepository>();
+        _repoMock = new Mock<ToiletRepository>(null);
         _controller = new ToiletController(_repoMock.Object);
     }
     [Fact]
@@ -28,7 +28,7 @@ public class ToiletControllerTests
     {
         _repoMock.Setup(r => r.GetToiletById(1)).Returns((Toilet)null);
         var result = _controller.GetToilet(1);
-        Assert.IsType<NotFoundResult>(result.Result);
+        Assert.IsType<NotFoundObjectResult>(result.Result);
     }
 
     [Fact]

@@ -5,7 +5,7 @@ using Npgsql;
 using NpgsqlTypes;
 namespace CourseAdminSystem.Model.Repositories;
 
-public class VisitRepository : BaseRepository, IVisitRepository
+public class VisitRepository : BaseRepository
 {
     public VisitRepository(IConfiguration configuration) : base(configuration) { }
     public virtual Visit GetVisitById(int visitid)

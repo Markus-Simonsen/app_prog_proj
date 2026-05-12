@@ -9,8 +9,8 @@ namespace CourseAdminSystem.API.Controllers
     [ApiController]
     public class ToiletController : ControllerBase
     {
-        protected IToiletRepository Repository { get; }
-        public ToiletController(IToiletRepository repository)
+        protected ToiletRepository Repository { get; }
+        public ToiletController(ToiletRepository repository)
         {
             Repository = repository;
         }
@@ -21,7 +21,7 @@ namespace CourseAdminSystem.API.Controllers
             Toilet toilet = Repository.GetToiletById(id);
             if (toilet == null)
             {
-                return NotFound();
+                return NotFound("Toilet with id " + id + " not found");
             }
             return Ok(toilet);
         }

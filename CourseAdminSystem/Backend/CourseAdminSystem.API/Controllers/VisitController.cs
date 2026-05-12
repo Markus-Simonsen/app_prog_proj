@@ -9,8 +9,8 @@ namespace CourseAdminSystem.API.Controllers
     [ApiController]
     public class VisitController : ControllerBase
     {
-        protected IVisitRepository Repository { get; }
-        public VisitController(IVisitRepository repository)
+        protected VisitRepository Repository { get; }
+        public VisitController(VisitRepository repository)
         {
             Repository = repository;
         }
