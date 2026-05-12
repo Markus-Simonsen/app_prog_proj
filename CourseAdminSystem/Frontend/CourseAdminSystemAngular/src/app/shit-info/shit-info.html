@@ -1,11 +1,14 @@
 <main>
   <h2>Toilet ID: {{ toiletid }}</h2>
-  <button id="seeOnMapBtn" routerLink="/shit-map/{{ toiletid }}/{{ shits[0]?.TheToilet?.Location }}">
-  See on map
-</button>
-  <div class="shitters-container" id="shittersContainer">
+  <button
+    id="seeOnMapBtn"
+    routerLink="/shit-map/{{ toiletid }}/{{ shits[0]?.TheToilet?.Location }}"
+  >
+    See on map
+  </button>
+  <div class="users-container" id="usersContainer">
     <div *ngFor="let shit of shits" class="shit-item">
-      <p><strong>Name:</strong> {{ shit.TheShitter?.FirstName }} {{ shit.TheShitter?.LastName }}</p>
+      <p><strong>Name:</strong> {{ shit.TheUser?.FirstName }} {{ shit.TheUser?.LastName }}</p>
       <p><strong>Location:</strong> {{ shit.TheToilet?.Location }}</p>
       <p><strong>Time:</strong> {{ shit.Time | date: 'short' }}</p>
       <p><strong>Rating:</strong> {{ shit.Rating ?? 'Not rated' }}</p>

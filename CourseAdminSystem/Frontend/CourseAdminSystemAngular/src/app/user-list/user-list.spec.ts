@@ -2,18 +2,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommonModule } from '@angular/common';
 
-import { ShitterList } from './shitter-list';
+import { UserList } from './user-list';
 
-describe('ShitterList', () => {
-  let component: ShitterList;
-  let fixture: ComponentFixture<ShitterList>;
+describe('UserList', () => {
+  let component: UserList;
+  let fixture: ComponentFixture<UserList>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ShitterList],
+      imports: [UserList],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ShitterList);
+    fixture = TestBed.createComponent(UserList);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

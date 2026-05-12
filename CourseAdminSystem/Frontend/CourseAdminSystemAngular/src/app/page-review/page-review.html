@@ -2,19 +2,19 @@
   <main class="content">
     <h1 class="main-title">How was your poo experience?</h1>
     <p class="subtitle">On a scale of 1 to 5 happy poop emojis</p>
-
     <div class="emoji-rating">
       @for (star of [1, 2, 3, 4, 5]; track star) {
         <span
           class="poop-emoji"
-          [class.selected]="star <= (newAShit.Rating ?? 0)"
+          [class.selected]="star <= (newVisit.Rating ?? 0)"
           (click)="setRating(star)"
-        >💩</span>
+          >💩</span
+        >
       }
     </div>
 
     <textarea
-      [(ngModel)]="newAShit.Review"
+      [(ngModel)]="newVisit.Review"
       placeholder="Write your review here"
       class="review-box"
       #ReviewField="ngModel"
@@ -22,10 +22,16 @@
 
     <button
       (click)="submitReview()"
-      [disabled]="!newAShit.Rating"
+      [disabled]="!newVisit.Rating || !currentUser"
       class="submit-pill"
     >
       Submit
     </button>
+    @if (!currentUser) {
+      <p class="login-prompt">
+        You must be logged in to submit a review.
+        <a routerLink="/page-log-in" class="signup-link">Log in here.</a>
+      </p>
+    }
   </main>
 </div>

@@ -5,11 +5,11 @@
     <nav class="nav-links">
       <a routerLink="/">Home</a>
       <a routerLink="/shit-search">Toilets</a>
-      <ng-container *ngIf="currentShitter$ | async as user">
+      <ng-container *ngIf="currentUser$ | async as user">
         <span class="username">{{ user.FirstName }} {{ user.LastName }}</span>
         <button (click)="logout()" class="logout-btn">Log out</button>
       </ng-container>
-      <ng-container *ngIf="!(currentShitter$ | async)">
+      <ng-container *ngIf="!(currentUser$ | async)">
         <button routerLink="/page-log-in" class="login-btn">Log in</button>
       </ng-container>
     </nav>

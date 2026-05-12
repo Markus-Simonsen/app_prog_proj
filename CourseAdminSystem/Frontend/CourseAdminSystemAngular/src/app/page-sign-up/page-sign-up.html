@@ -5,7 +5,7 @@
       <input
         type="text"
         id="firstNameInput"
-        [(ngModel)]="newShitter.FirstName"
+        [(ngModel)]="newUser.FirstName"
         placeholder="First name"
         class="pill-input"
         required
@@ -18,7 +18,7 @@
       <input
         type="text"
         id="lastNameInput"
-        [(ngModel)]="newShitter.LastName"
+        [(ngModel)]="newUser.LastName"
         placeholder="Last name"
         class="pill-input"
         required
@@ -31,7 +31,7 @@
       <input
         type="email"
         id="emailInput"
-        [(ngModel)]="newShitter.Email"
+        [(ngModel)]="newUser.Email"
         placeholder="Email"
         class="pill-input"
         required
@@ -45,7 +45,7 @@
       <input
         type="password"
         id="passwordInput"
-        [(ngModel)]="newShitter.Password"
+        [(ngModel)]="newUser.Password"
         placeholder="Password"
         class="pill-input"
         required
@@ -58,7 +58,12 @@
 
       <button
         (click)="signUp()"
-        [disabled]="FirstNameField.invalid || LastNameField.invalid || EmailField.invalid || PasswordField.invalid"
+        [disabled]="
+          FirstNameField.invalid ||
+          LastNameField.invalid ||
+          EmailField.invalid ||
+          PasswordField.invalid
+        "
         class="submit-pill"
       >
         Sign me up!
@@ -66,7 +71,7 @@
 
       @if (errorMessage) {
         <span class="error">{{ errorMessage }}</span>
-}
+      }
     </div>
   </main>
 </div>

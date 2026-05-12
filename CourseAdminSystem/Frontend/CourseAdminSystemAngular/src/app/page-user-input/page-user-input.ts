@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AShitService } from '../services/ashit-service';
-import { AShit } from '../model/ashit';
+import { VisitService } from '../services/visit-service';
+import { Visit } from '../model/visit';
 import { ToiletService } from '../services/toilet-service';
 import { Router } from '@angular/router';
 import { Toilet } from '../model/toilet';
+import { AuthService } from '../services/auth';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-page-user-input',
@@ -18,9 +20,9 @@ export class PageUserInput implements OnInit {
   Longitude: number | null = null;
   Latitude: number | null = null;
 
-  newAShit: AShit = {
-    ShitID: 0,
-    Shitterid: 0,
+  newVisit: Visit = {
+    VisitID: 0,
+    Userid: 0,
     Toiletid: undefined,
     Time: new Date(),
     Rating: undefined,
@@ -28,27 +30,29 @@ export class PageUserInput implements OnInit {
   };
 
   constructor(
-    private ashitService: AShitService,
+    private visitService: VisitService,
     private toiletService: ToiletService,
-    private router: Router,) {
+    private router: Router,
+    private authService: AuthService,
+  ) {
     console.log('PageUserInput component created');
   }
 
   ngOnInit(): void {
     console.log('PageUserInput ngOnInit called');
   }
-  
-  buildLocation(): number {
-  return Math.round((this.Latitude ?? 0) * 10000 + (this.Longitude ?? 0));
-}
 
-submit(): void {
-  if (this.Latitude === null || this.Longitude === null) {
-    console.error('Latitude or Longitude is missing');
-    return;
+  buildLocation(): number {
+    return Math.round((this.Latitude ?? 0) * 10000 + (this.Longitude ?? 0));
   }
 
-  console.log('Location being sent:', this.buildLocation()); // temporary debug
+  submit(): void {
+    if (this.Latitude === null || this.Longitude === null) {
+      console.error('Latitude or Longitude is missing');
+      return;
+    }
+
+    console.log('Location being sent:', this.buildLocation()); // temporary debug
 
     const newToilet: Toilet = {
       ToiletId: 0,
@@ -60,17 +64,18 @@ submit(): void {
       (toilet: Toilet) => {
         console.log('Toilet created:', toilet);
 
-        // Step 2: use the returned toiletid for the ashit record
-        this.newAShit.Toiletid = toilet.ToiletId;
-        this.newAShit.Time = new Date();
+        // Step 2: use the returned toiletid for the visit record
+        this.newVisit.Toiletid = toilet.ToiletId;
+        this.newVisit.Time = new Date();
+        this.newVisit.Userid = this.authService.getCurrentUser()?.Userid ?? 0; // Get current user ID or default to 0
 
-        this.ashitService.createAShit(this.newAShit).subscribe(
-          (response: AShit) => {
-            console.log('AShit created:', response);
+        this.visitService.createVisit(this.newVisit).subscribe(
+          (response: Visit) => {
+            console.log('Visit created:', response);
             this.router.navigate(['/thank-you']);
           },
           (error) => {
-            console.error('Error creating ashit record:', error);
+            console.error('Error creating visit record:', error);
           },
         );
       },

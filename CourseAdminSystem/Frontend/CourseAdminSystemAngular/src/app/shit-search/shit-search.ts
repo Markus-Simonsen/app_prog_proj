@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, computed, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ToiletService } from '../services/toilet-service';
@@ -13,14 +13,51 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./shit-search.css'],
 })
 export class ShitSearch implements OnInit {
-  Toilets: Toilet[] = [];
-  Longitude: number = 1234;
-  Latitude: number = 5512;
-  Invalid: boolean = false;
+  private toiletsSignal = signal<Toilet[]>([]);
+  private latitudeSignal: WritableSignal<number | null> = signal(5512);
+  private longitudeSignal: WritableSignal<number | null> = signal(1234);
+
+  readonly Invalid = computed(() => {
+    const latitude = this.latitudeSignal();
+    const longitude = this.longitudeSignal();
+    return (
+      latitude == null ||
+      longitude == null ||
+      latitude < 5500 ||
+      latitude > 5600 ||
+      longitude < 1200 ||
+      longitude > 1300
+    );
+  });
+
   constructor(private toiletService: ToiletService) {}
 
   ngOnInit(): void {
     console.log('ngOnInit called');
+  }
+
+  get Toilets(): Toilet[] {
+    return this.toiletsSignal();
+  }
+
+  set Toilets(value: Toilet[]) {
+    this.toiletsSignal.set(value);
+  }
+
+  get Latitude(): number | null {
+    return this.latitudeSignal();
+  }
+
+  set Latitude(value: number | string | null) {
+    this.latitudeSignal.set(value === '' || value == null ? null : Number(value));
+  }
+
+  get Longitude(): number | null {
+    return this.longitudeSignal();
+  }
+
+  set Longitude(value: number | string | null) {
+    this.longitudeSignal.set(value === '' || value == null ? null : Number(value));
   }
 
   extractLatitude(location: number): number {
@@ -28,7 +65,6 @@ export class ShitSearch implements OnInit {
   }
 
   extractLongitude(location: number): number {
-    // Implementation for extracting longitude from location
     return Math.floor(location / 10000) / 100;
   }
 
@@ -38,37 +74,29 @@ export class ShitSearch implements OnInit {
     const locationLatitude = this.extractLatitude(location);
     const locationLongitude = this.extractLongitude(location);
 
-    // distance by pythagorean
     const latDiff = toiletLatitude - locationLatitude;
     const lonDiff = toiletLongitude - locationLongitude;
-    const distance = Math.sqrt(latDiff * latDiff + lonDiff * lonDiff);
-    return distance;
+    return Math.sqrt(latDiff * latDiff + lonDiff * lonDiff);
   }
 
   searchForToilets() {
-    if (
-      this.Latitude == null ||
-      this.Longitude == null ||
-      this.Latitude < 5500 ||
-      this.Latitude > 5600 ||
-      this.Longitude < 1200 ||
-      this.Longitude > 1300
-    ) {
+    if (this.Invalid()) {
       return;
     }
 
-    const location = this.Longitude * 100 + this.Latitude * 1000000;
+    const latitude = this.Latitude as number;
+    const longitude = this.Longitude as number;
+    const location = longitude * 100 + latitude * 1000000;
     console.log('Searching for toilets near location:', location);
+
     this.toiletService.getToilets().subscribe((toilets) => {
-      this.Toilets = toilets;
-      console.log('API response received:', toilets);
-      // Order toilets by distance to location
-      this.Toilets.sort((a, b) => {
+      const sortedToilets = [...toilets].sort((a, b) => {
         const distanceA = this.distanceToToilet(a, location);
         const distanceB = this.distanceToToilet(b, location);
         return distanceA - distanceB;
       });
-      this.Toilets = [...this.Toilets];
+
+      this.toiletsSignal.set(sortedToilets);
       console.log('Toilets sorted by distance:', this.Toilets);
     });
   }

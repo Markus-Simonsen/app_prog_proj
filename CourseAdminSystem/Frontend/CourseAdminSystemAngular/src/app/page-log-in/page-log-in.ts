@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Shitter } from '../model/shitter';
+import { User } from '../model/user';
 import { AuthService } from '../services/auth';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +21,7 @@ export class PageLogIn implements OnInit {
 
   Email: string = '';
   Password: string = '';
-  shitters: Shitter[] = []; 
+  users: User[] = [];
   isLoading: boolean = false;
   errorMessage: string = '';
 
@@ -30,7 +30,7 @@ export class PageLogIn implements OnInit {
   login(): void {
     this.errorMessage = '';
     this.isLoading = true;
-
+    console.log('Attempting login with email:', this.Email);
     this.authService.login(this.Email, this.Password).subscribe({
       next: () => {
         this.isLoading = false;

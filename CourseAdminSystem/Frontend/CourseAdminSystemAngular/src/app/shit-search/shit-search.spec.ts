@@ -14,16 +14,17 @@ describe('ShitSearch', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ShitSearch],
-      providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])]
-    })
-    .compileComponents();
+      providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ShitSearch);
     component = fixture.componentInstance;
-    component.Toilets = [{
-      ToiletId: 1,
-      Location: 1,
-      }] as Toilet[];
+    (component as any).Toilets = [
+      {
+        ToiletId: 1,
+        Location: 1,
+      },
+    ] as Toilet[];
     await fixture.whenStable();
   });
 

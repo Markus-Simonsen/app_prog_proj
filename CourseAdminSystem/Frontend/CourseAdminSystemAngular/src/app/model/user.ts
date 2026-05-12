@@ -1,5 +1,5 @@
-export interface Shitter {
-  Shitterid: number;
+export interface User {
+  Userid: number;
   FirstName: string;
   LastName: string;
   Email: string;

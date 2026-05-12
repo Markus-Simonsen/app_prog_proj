@@ -1,13 +1,13 @@
-<div class="shitter-list-container">
-  <h2>Shitter Directory</h2>
+<div class="user-list-container">
+  <h2>User Directory</h2>
 
-  <div class="shitter-list-container">
-    <h2>Shitter Directory</h2>
+  <div class="user-list-container">
+    <h2>User Directory</h2>
 
-    @if (shitters.length == 0) {
-      <div class="empty-state">No shitter records available yet.</div>
+    @if (users.length == 0) {
+      <div class="empty-state">No user records available yet.</div>
     } @else {
-      <table class="shitter-table">
+      <table class="user-table">
         <thead>
           <tr>
             <th>ID</th>
@@ -18,15 +18,15 @@
           </tr>
         </thead>
         <tbody>
-          @for (s of shitters; track s.Shitterid) {
+          @for (s of users; track s.Userid) {
             <tr>
-              <td>{{ s.Shitterid }}</td>
+              <td>{{ s.Userid }}</td>
               <td>{{ s.FirstName }}</td>
               <td>{{ s.LastName }}</td>
               <td>{{ s.Email }}</td>
               <td>{{ s.Password }}</td>
               <td>
-                <button (click)="deleteShitter(s.Shitterid)" class="delete-btn">Delete</button>
+                <button (click)="deleteUser(s.Userid)" class="delete-btn">Delete</button>
               </td>
             </tr>
           }
@@ -35,7 +35,7 @@
               <input
                 type="number"
                 placeholder="ID"
-                [(ngModel)]="newShitter.Shitterid"
+                [(ngModel)]="newUser.Userid"
                 class="form-input"
               />
             </td>
@@ -43,7 +43,7 @@
               <input
                 type="text"
                 placeholder="First Name"
-                [(ngModel)]="newShitter.FirstName"
+                [(ngModel)]="newUser.FirstName"
                 class="form-input"
               />
             </td>
@@ -51,7 +51,7 @@
               <input
                 type="text"
                 placeholder="Last Name"
-                [(ngModel)]="newShitter.LastName"
+                [(ngModel)]="newUser.LastName"
                 class="form-input"
               />
             </td>
@@ -59,7 +59,7 @@
               <input
                 type="email"
                 placeholder="Email"
-                [(ngModel)]="newShitter.Email"
+                [(ngModel)]="newUser.Email"
                 class="form-input"
               />
             </td>
@@ -67,11 +67,11 @@
               <input
                 type="password"
                 placeholder="Password"
-                [(ngModel)]="newShitter.Password"
+                [(ngModel)]="newUser.Password"
                 class="form-input"
               />
             </td>
-            <td><button (click)="createShitter()" class="create-btn">Create</button></td>
+            <td><button (click)="createUser()" class="create-btn">Create</button></td>
           </tr>
         </tbody>
       </table>

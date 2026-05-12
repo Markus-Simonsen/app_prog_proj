@@ -3,7 +3,6 @@
     <h1 class="main-title">Help others poo better!</h1>
 
     <div class="input-stack">
-
       <input
         type="number"
         [(ngModel)]="Latitude"
@@ -31,11 +30,10 @@
       @if (LongitudeField.invalid && LongitudeField.touched) {
         <span class="error">Please enter a valid longitude between 1200 and 1300.</span>
       }
-      
 
       <input
         type="number"
-        [(ngModel)]="newAShit.Rating"
+        [(ngModel)]="newVisit.Rating"
         placeholder="Rating (1-5 💩)"
         class="pill-input"
         required
@@ -49,7 +47,7 @@
 
       <input
         type="text"
-        [(ngModel)]="newAShit.Review"
+        [(ngModel)]="newVisit.Review"
         placeholder="Leave a review for others!"
         class="pill-input"
         required
@@ -61,7 +59,12 @@
 
       <button
         (click)="submit()"
-        [disabled]="LongitudeField.invalid || LatitudeField.invalid || RatingField.invalid || ReviewField.invalid"
+        [disabled]="
+          LongitudeField.invalid ||
+          LatitudeField.invalid ||
+          RatingField.invalid ||
+          ReviewField.invalid
+        "
         class="submit-pill"
       >
         Submit

@@ -30,7 +30,7 @@ main {
   align-items: center;
 }
 
-.shitters-container {
+.users-container {
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -38,7 +38,7 @@ main {
   flex-wrap: wrap;
 }
 
-.shitter-card {
+.user-card {
   background-color: white;
   border-radius: 8px;
   padding: 1rem;

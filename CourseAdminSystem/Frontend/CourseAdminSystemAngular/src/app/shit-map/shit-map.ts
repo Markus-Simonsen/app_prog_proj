@@ -5,6 +5,7 @@ import { ToiletService } from '../services/toilet-service';
 
 @Component({
   selector: 'app-shit-map',
+  standalone: true,
   imports: [RouterLink],
   templateUrl: './shit-map.html',
   styleUrl: './shit-map.css',

@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { AuthService } from './services/auth';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { Shitter } from './model/shitter';
+import { User } from './model/user';
 
 @Component({
   selector: 'app-root',
@@ -14,10 +14,10 @@ import { Shitter } from './model/shitter';
 })
 export class App implements OnInit {
   protected readonly title = signal('CourseAdminSystemAngular');
-  currentShitter$: Observable<Shitter | null>;
+  currentUser$: Observable<User | null>;
 
   constructor(private authService: AuthService) {
-    this.currentShitter$ = this.authService.currentShitter$;
+    this.currentUser$ = this.authService.currentUser$;
   }
 
   ngOnInit(): void {

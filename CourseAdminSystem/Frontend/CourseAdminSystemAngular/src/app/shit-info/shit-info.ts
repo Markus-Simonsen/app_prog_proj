@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AShit } from '../model/ashit';
-import { AShitService } from '../services/ashit-service';
+import { Visit } from '../model/visit';
+import { VisitService } from '../services/visit-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -14,15 +14,15 @@ import { RouterLink } from '@angular/router';
 })
 export class ShitInfo implements OnInit {
   constructor(
-    private ashitService: AShitService,
+    private visitService: VisitService,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
   ) {}
   toiletid: number = 0;
-  shits: AShit[] = [];
-  newAShit: AShit = {
-    ShitID: 0,
-    Shitterid: 0,
+  shits: Visit[] = [];
+  newVisit: Visit = {
+    VisitID: 0,
+    Userid: 0,
     Toiletid: 0,
     Time: new Date(),
     Rating: 0,
@@ -30,17 +30,20 @@ export class ShitInfo implements OnInit {
   };
 
   ngOnInit(): void {
-    console.log('AshitList ngOnInit called');
+    console.log('VisitList ngOnInit called');
     this.route.params.subscribe((params: any) => {
-      this.toiletid = +params['toiletid'];
-      this.loadShitsFromToilet(this.toiletid, true);
+      const id = params?.toiletid ? +params['toiletid'] : this.toiletid;
+      this.toiletid = id;
+      if (id) {
+        this.loadShitsFromToilet(id, true);
+      }
     });
   }
 
   loadShitsFromToilet(ToiletId: number, jointables: boolean): void {
     console.log('loadShits called with ToiletId:', ToiletId);
-    this.ashitService.getShitsByToiletId(ToiletId, jointables).subscribe(
-      (moreshits: AShit[]) => {
+    this.visitService.getShitsByToiletId(ToiletId, jointables).subscribe(
+      (moreshits: Visit[]) => {
         console.log('API response received:', moreshits);
         console.log('Number of records:', moreshits.length);
         console.log('After assignment, this.shits:', this.shits);

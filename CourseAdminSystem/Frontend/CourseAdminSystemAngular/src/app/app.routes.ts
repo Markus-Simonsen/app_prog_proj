@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { ShitterList } from './shitter-list/shitter-list';
+import { UserList } from './user-list/user-list';
 import { PageUserInput } from './page-user-input/page-user-input';
 import { ToiletList } from './toilet-list/toilet-list';
 import { ShitSearch } from './shit-search/shit-search';
@@ -15,7 +15,7 @@ export const routes: Routes = [
   { path: '', component: Welcome },
   { path: 'thank-you', component: ThankYou },
 
-  { path: 'shitters', component: ShitterList },
+  { path: 'users', component: UserList },
   { path: 'page-user-input', component: PageUserInput },
   { path: 'toilet', component: ToiletList },
   { path: 'shit-map/:location', component: ShitMap },
@@ -24,5 +24,5 @@ export const routes: Routes = [
   { path: 'page-log-in', component: PageLogIn },
   { path: 'page-sign-up', component: PageSignUp },
   { path: 'page-review/:toiletid', component: PageReview },
-  { path: 'shit-map/:toiletid/:location', component: ShitMap }
+  { path: 'shit-map/:toiletid/:location', component: ShitMap },
 ];
