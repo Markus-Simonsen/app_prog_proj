@@ -8,21 +8,21 @@ INSERT INTO "user" ("userid", "email", "password", "firstname", "lastname") VALU
 
 -- Insert toilets into toilet table
 INSERT INTO "toilet" ("toiletid", "location") VALUES
-(101, 55671259),
-(102, 55661259),
-(103, 55681255),
-(104, 55671256),
-(105, 55651261);
+(1, 55671259),
+(2, 55661259),
+(3, 55681255),
+(4, 55671256),
+(5, 55651261);
 
 -- Insert reviews into a_shit table
 INSERT INTO "visit" ("visitid", "userid", "toiletid", "time", "rating", "review") VALUES
-(1001, 1, 101, '2025-01-15', 4, 'Clean and well maintained'),
-(1002, 2, 102, '2025-02-20', 2, 'Needs better ventilation'),
-(1003, 3, 103, '2025-03-10', 5, 'Excellent facilities!'),
-(1004, 1, 104, '2025-04-05', 3, 'Average condition'),
-(1005, 4, 105, '2025-05-12', 1, 'Very dirty, avoid if possible'),
-(1006, 5, 101, '2025-06-18', 4, 'Good overall experience'),
-(1007, 2, 103, '2025-07-22', 5, 'Best restroom I have used'),
-(1008, 3, 102, '2025-08-30', 2, 'Out of order sign ignored'),
-(1009, 4, 104, '2025-09-14', 3, 'Decent but could be cleaner'),
-(1010, 5, 105, '2025-10-25', 4, 'Surprisingly good for public facility');
+(1, 1, 1, '2025-01-15', 4, 'Clean and well maintained'),
+(2, 2, 2, '2025-02-20', 2, 'Needs better ventilation'),
+(3, 3, 3, '2025-03-10', 5, 'Excellent facilities!'),
+(4, 1, 4, '2025-04-05', 3, 'Average condition'),
+(5, 4, 5, '2025-05-12', 1, 'Very dirty, avoid if possible'),
+(6, 5, 1, '2025-06-18', 4, 'Good overall experience'),
+(7, 2, 3, '2025-07-22', 5, 'Best restroom I have used'),
+(8, 3, 2, '2025-08-30', 2, 'Out of order sign ignored'),
+(9, 4, 4, '2025-09-14', 3, 'Decent but could be cleaner'),
+(10, 5, 5, '2025-10-25', 4, 'Surprisingly good for public facility');
